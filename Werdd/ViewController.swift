@@ -39,11 +39,10 @@ class ViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            wordView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 20),
-            wordView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            wordView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            wordView.heightAnchor.constraint(equalToConstant: 300),
-            wordView.widthAnchor.constraint(equalToConstant: 300),
+            wordView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 30),
+            wordView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            wordView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            wordView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
         ])
     }
 
