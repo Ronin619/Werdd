@@ -33,16 +33,17 @@ class ViewController: UIViewController {
         view.addSubview(wordView)
         
         NSLayoutConstraint.activate([
-            wordView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            wordView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            wordView.heightAnchor.constraint(equalToConstant: 300),
-            wordView.widthAnchor.constraint(equalToConstant: 350),
+            headerLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            headerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            headerLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            headerLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
-            headerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            headerLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
+            wordView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 20),
+            wordView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            wordView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            wordView.heightAnchor.constraint(equalToConstant: 300),
+            wordView.widthAnchor.constraint(equalToConstant: 300),
         ])
     }
 
