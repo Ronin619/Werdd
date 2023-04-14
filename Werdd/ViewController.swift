@@ -35,6 +35,8 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "creating a sequence of instructions to enable the computer to do something."
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
         return label
     }()
     
@@ -47,15 +49,6 @@ class ViewController: UIViewController {
         setUpContainerView()
         setUpWordLabel()
         setUpWordDefinitionLabel()
-    }
-    
-    func setUpWordLabel() {
-       containerView.addSubview(wordLabel)
-        
-        NSLayoutConstraint.activate([
-            wordLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
-            wordLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-        ])
     }
     
     func setUpHeaderLabel() {
@@ -78,15 +71,23 @@ class ViewController: UIViewController {
             containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
         ])
     }
+    
+    func setUpWordLabel() {
+       containerView.addSubview(wordLabel)
+        
+        NSLayoutConstraint.activate([
+            wordLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+            wordLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+        ])
+    }
 
     func setUpWordDefinitionLabel() {
         containerView.addSubview(wordDefinitionLabel)
     
         NSLayoutConstraint.activate([
-            wordDefinitionLabel.topAnchor.constraint(equalTo: .bottomAnchor, constant: 30),
-            wordDefinitionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            wordDefinitionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            wordDefinitionLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
-    ])
-}
+            wordDefinitionLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 10),
+            wordDefinitionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            wordDefinitionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 20),
+        ])
+    }
 }
