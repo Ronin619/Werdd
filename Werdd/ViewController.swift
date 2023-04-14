@@ -15,28 +15,36 @@ class ViewController: UIViewController {
         label.text = "Werdd."
         return label
     }()
-
+    
     let wordView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .cyan
+        view.backgroundColor = UIColor(named: "turquoise")
         view.layer.cornerRadius = 20
         return view
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .lightGray
         
+        view.backgroundColor = UIColor(named: "sandGrey")
+        
+        setUpHeaderLabel()
+        setUpWordView()
+    }
+    
+    func setUpHeaderLabel() {
         view.addSubview(headerLabel)
-        view.addSubview(wordView)
         
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            headerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            headerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             headerLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor)
         ])
+    }
+    
+    func setUpWordView() {
+        view.addSubview(wordView)
         
         NSLayoutConstraint.activate([
             wordView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 30),
@@ -45,7 +53,4 @@ class ViewController: UIViewController {
             wordView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
         ])
     }
-
-
 }
-
