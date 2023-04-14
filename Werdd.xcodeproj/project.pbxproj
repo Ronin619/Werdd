@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3053C34329E8EED50073DAC2 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3053C34229E8EED50073DAC2 /* Roboto-Bold.ttf */; };
+		3053C34529E8EEDE0073DAC2 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3053C34429E8EEDE0073DAC2 /* Roboto-Italic.ttf */; };
+		3053C34729E8EEE50073DAC2 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3053C34629E8EEE50073DAC2 /* Roboto-Regular.ttf */; };
 		3060788429E79CC4003F8288 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3060788329E79CC4003F8288 /* AppDelegate.swift */; };
 		3060788629E79CC4003F8288 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3060788529E79CC4003F8288 /* SceneDelegate.swift */; };
 		3060788829E79CC4003F8288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3060788729E79CC4003F8288 /* ViewController.swift */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3053C34229E8EED50073DAC2 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../../../Roboto/Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		3053C34429E8EEDE0073DAC2 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "../../../Roboto/Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		3053C34629E8EEE50073DAC2 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../../Roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		3060788029E79CC4003F8288 /* Werdd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Werdd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3060788329E79CC4003F8288 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3060788529E79CC4003F8288 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +41,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3053C33529E8E9700073DAC2 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3053C34629E8EEE50073DAC2 /* Roboto-Regular.ttf */,
+				3053C34429E8EEDE0073DAC2 /* Roboto-Italic.ttf */,
+				3053C34229E8EED50073DAC2 /* Roboto-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		3060787729E79CC4003F8288 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +70,7 @@
 		3060788229E79CC4003F8288 /* Werdd */ = {
 			isa = PBXGroup;
 			children = (
+				3053C33529E8E9700073DAC2 /* Fonts */,
 				3060788329E79CC4003F8288 /* AppDelegate.swift */,
 				3060788529E79CC4003F8288 /* SceneDelegate.swift */,
 				3060788729E79CC4003F8288 /* ViewController.swift */,
@@ -122,8 +139,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3053C34729E8EEE50073DAC2 /* Roboto-Regular.ttf in Resources */,
 				3060789029E79CC5003F8288 /* LaunchScreen.storyboard in Resources */,
 				3060788D29E79CC5003F8288 /* Assets.xcassets in Resources */,
+				3053C34529E8EEDE0073DAC2 /* Roboto-Italic.ttf in Resources */,
+				3053C34329E8EED50073DAC2 /* Roboto-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
