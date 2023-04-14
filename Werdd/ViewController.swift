@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Werdd."
-        //label.font = UIFont(name: "Roboto-Bold", size: 32)
+        label.font = UIFont(name: "Roboto-Bold", size: 32)
         return label
     }()
     
