@@ -33,20 +33,21 @@ class ViewController: UIViewController {
         return label
     }()
     
-    let wordDefinitionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "creating a sequence of instructions to enable the computer to do something."
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        return label
-    }()
-    
     let wordSpeechLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "noun"
         label.font = UIFont(name: "Roboto-Italic", size: 12)
+        return label
+    }()
+    
+    let wordDefinitionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "creating a sequence of instructions to enable the computer to do something."
+        label.font = UIFont(name: "Roboto-Regular", size: 18)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
         return label
     }()
     
