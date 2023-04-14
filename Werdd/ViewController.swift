@@ -107,6 +107,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             wordSpeechLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
             wordSpeechLabel.leadingAnchor.constraint(equalTo: wordLabel.trailingAnchor, constant: 10),
+            wordSpeechLabel.bottomAnchor.constraint(equalTo: wordLabel.bottomAnchor)
         ])
     }
 }
