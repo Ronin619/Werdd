@@ -40,6 +40,13 @@ class ViewController: UIViewController {
         return label
     }()
     
+    let wordSpeechLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "noun"
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +56,7 @@ class ViewController: UIViewController {
         setUpContainerView()
         setUpWordLabel()
         setUpWordDefinitionLabel()
+        setUpWordSpeechLabel()
     }
     
     func setUpHeaderLabel() {
@@ -88,6 +96,15 @@ class ViewController: UIViewController {
             wordDefinitionLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 10),
             wordDefinitionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             wordDefinitionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 20),
+        ])
+    }
+    
+    func setUpWordSpeechLabel() {
+        containerView.addSubview(wordSpeechLabel)
+        
+        NSLayoutConstraint.activate([
+            wordSpeechLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+            wordSpeechLabel.leadingAnchor.constraint(equalTo: wordLabel.trailingAnchor, constant: 20),
         ])
     }
 }
