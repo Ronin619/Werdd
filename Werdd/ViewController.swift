@@ -51,9 +51,10 @@ class ViewController: UIViewController {
         return label
     }()
     
-    let button: UIButton = {
+    let refreshButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(refreshButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -67,6 +68,7 @@ class ViewController: UIViewController {
         setUpWordLabel()
         setUpWordDefinitionLabel()
         setUpWordSpeechLabel()
+        setUpButton()
     }
     
     func setUpHeaderLabel() {
@@ -117,5 +119,18 @@ class ViewController: UIViewController {
             wordSpeechLabel.leadingAnchor.constraint(equalTo: wordLabel.trailingAnchor, constant: 10),
             wordSpeechLabel.bottomAnchor.constraint(equalTo: wordLabel.bottomAnchor)
         ])
+    }
+    
+    func setUpButton() {
+        containerView.addSubview(refreshButton)
+        refreshButton.setImage(UIImage(systemName: "arrow.clockwise.circle"), for: .normal)
+        
+        NSLayoutConstraint.activate([
+            refreshButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+            refreshButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
+        ])
+    }
+    @objc func refreshButtonPressed() {
+        print("Hello")
     }
 }
