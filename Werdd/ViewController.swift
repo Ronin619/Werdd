@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
-    }
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
