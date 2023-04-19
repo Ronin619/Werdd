@@ -60,11 +60,10 @@ class ViewController: UIViewController {
     let refreshButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .black
         button.addTarget(self, action: #selector(refreshButtonPressed), for: .touchUpInside)
         return button
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -133,7 +132,7 @@ class ViewController: UIViewController {
         let sizeConfig = UIImage.SymbolConfiguration(scale: .large)
         let refreshSymbol = UIImage(systemName: "arrow.clockwise.circle", withConfiguration: sizeConfig)
         refreshButton.setImage(refreshSymbol, for: .normal)
-        refreshButton.tintColor = UIColor.black
+        refreshButton.tintColor = UIColor.white
         
         NSLayoutConstraint.activate([
             refreshButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
