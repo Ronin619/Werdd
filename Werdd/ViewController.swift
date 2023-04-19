@@ -7,6 +7,12 @@
 
 import UIKit
 
+struct dictionary {
+    let word: String
+    let speech: String
+    let definition: String
+}
+
 class ViewController: UIViewController {
     
     let headerLabel: UILabel = {
