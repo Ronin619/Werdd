@@ -154,6 +154,12 @@ class ViewController: UIViewController {
     }
     
     @objc func refreshButtonPressed() {
-        print("Hello")
+        let randomWord = randomWord()
     }
+    
+    func randomWord() -> wordBank? {
+        return wordArr.randomElement()
+    }
+    
+    
 }
