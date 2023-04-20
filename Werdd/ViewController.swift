@@ -155,11 +155,16 @@ class ViewController: UIViewController {
     
     @objc func refreshButtonPressed() {
         let randomWord = randomWord()
+        updateWordView(withWord: randomWord)
     }
     
     func randomWord() -> wordBank? {
         return wordArr.randomElement()
     }
     
-    
+    func updateWordView(withWord word: wordBank?) {
+        wordLabel.text = word?.word
+        wordDefinitionLabel.text = word?.definition
+        wordSpeechLabel.text = word?.speech
+    }
 }
