@@ -70,10 +70,9 @@ class ViewController: UIViewController {
         return label
     }()
     
-    let refreshButton: UIButton = {
-        let button = UIButton()
+    let refreshButton: RefreshButton = {
+        let button = RefreshButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(refreshButtonPressed), for: .touchUpInside)
         return button
     }()
 
@@ -126,7 +125,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             wordDefinitionLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 10),
             wordDefinitionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-            wordDefinitionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 20),
+            wordDefinitionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
         ])
     }
     
@@ -142,11 +141,7 @@ class ViewController: UIViewController {
     
     func setUpButton() {
         containerView.addSubview(refreshButton)
-        let sizeConfig = UIImage.SymbolConfiguration(scale: .large)
-        let refreshSymbol = UIImage(systemName: "arrow.clockwise.circle", withConfiguration: sizeConfig)
-        refreshButton.setImage(refreshSymbol, for: .normal)
-        refreshButton.tintColor = UIColor.white
-        
+        refreshButton.addTarget(self, action: #selector(refreshButtonPressed), for: .touchUpInside)
         NSLayoutConstraint.activate([
             refreshButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             refreshButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
@@ -167,4 +162,5 @@ class ViewController: UIViewController {
         wordDefinitionLabel.text = word?.definition
         wordSpeechLabel.text = word?.speech
     }
+    
 }
