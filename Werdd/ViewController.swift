@@ -80,6 +80,7 @@ class ViewController: UIViewController {
         setUpWordDefinitionLabel()
         setUpWordSpeechLabel()
         setUpButton()
+        setUpTableView()
     }
     
     func setUpHeaderLabel() {
@@ -134,10 +135,24 @@ class ViewController: UIViewController {
     
     func setUpButton() {
         containerView.addSubview(refreshButton)
+        
         refreshButton.addTarget(self, action: #selector(refreshButtonPressed), for: .touchUpInside)
+        
         NSLayoutConstraint.activate([
             refreshButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             refreshButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
+        ])
+    }
+    
+    func setUpTableView() {
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
         ])
     }
     
