@@ -12,6 +12,7 @@
 		3053C34529E8EEDE0073DAC2 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3053C34429E8EEDE0073DAC2 /* Roboto-Italic.ttf */; };
 		3053C34729E8EEE50073DAC2 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3053C34629E8EEE50073DAC2 /* Roboto-Regular.ttf */; };
 		3056680329F8A6D100AC13B8 /* WordBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3056680229F8A6D100AC13B8 /* WordBank.swift */; };
+		3056680529F8AF8D00AC13B8 /* WordsAndDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3056680429F8AF8D00AC13B8 /* WordsAndDefinitions.swift */; };
 		3060788429E79CC4003F8288 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3060788329E79CC4003F8288 /* AppDelegate.swift */; };
 		3060788629E79CC4003F8288 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3060788529E79CC4003F8288 /* SceneDelegate.swift */; };
 		3060788829E79CC4003F8288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3060788729E79CC4003F8288 /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 		3053C34429E8EEDE0073DAC2 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "../../../Roboto/Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		3053C34629E8EEE50073DAC2 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../../Roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		3056680229F8A6D100AC13B8 /* WordBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBank.swift; sourceTree = "<group>"; };
+		3056680429F8AF8D00AC13B8 /* WordsAndDefinitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsAndDefinitions.swift; sourceTree = "<group>"; };
 		3060788029E79CC4003F8288 /* Werdd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Werdd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3060788329E79CC4003F8288 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3060788529E79CC4003F8288 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				3060788529E79CC4003F8288 /* SceneDelegate.swift */,
 				3060788729E79CC4003F8288 /* ViewController.swift */,
 				3056680229F8A6D100AC13B8 /* WordBank.swift */,
+				3056680429F8AF8D00AC13B8 /* WordsAndDefinitions.swift */,
 				3060788C29E79CC5003F8288 /* Assets.xcassets */,
 				3060788E29E79CC5003F8288 /* LaunchScreen.storyboard */,
 				3060789129E79CC5003F8288 /* Info.plist */,
@@ -168,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3056680529F8AF8D00AC13B8 /* WordsAndDefinitions.swift in Sources */,
 				3060788829E79CC4003F8288 /* ViewController.swift in Sources */,
 				3045B0F329F0D511008DCEF9 /* RefreshButton.swift in Sources */,
 				3060788429E79CC4003F8288 /* AppDelegate.swift in Sources */,
