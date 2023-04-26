@@ -68,10 +68,9 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = UIColor(named: "sandGrey")
         
         setUpHeaderLabel()
@@ -105,17 +104,17 @@ class ViewController: UIViewController {
     }
     
     func setUpWordLabel() {
-       containerView.addSubview(wordLabel)
+        containerView.addSubview(wordLabel)
         
         NSLayoutConstraint.activate([
             wordLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
             wordLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
         ])
     }
-
+    
     func setUpWordDefinitionLabel() {
         containerView.addSubview(wordDefinitionLabel)
-    
+        
         NSLayoutConstraint.activate([
             wordDefinitionLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 10),
             wordDefinitionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
@@ -146,6 +145,7 @@ class ViewController: UIViewController {
     
     func setUpTableView() {
         view.addSubview(tableView)
+        tableView.dataSource = self
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -171,4 +171,22 @@ class ViewController: UIViewController {
         wordSpeechLabel.text = word?.speech
     }
     
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section:
+        Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath:
+        IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        var content = cell.defaultContentConfiguration()
+        content.text = "Test"
+        content.secondaryText = "2nd Test"
+        
+        cell.contentConfiguration = content
+        return cell
+    }
 }
