@@ -15,6 +15,8 @@ struct wordBank {
 
 class ViewController: UIViewController {
     
+    var wordsAndDefinitionData = WordsAndDefinitions()
+    
     let headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -176,17 +178,20 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section:
         Int) -> Int {
-        return 10
+        return wordsAndDefinitionData.content.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath:
         IndexPath) -> UITableViewCell {
+        
         let cell = UITableViewCell()
         var content = cell.defaultContentConfiguration()
-        content.text = "Test"
-        content.secondaryText = "2nd Test"
+        
+        content.text = wordsAndDefinitionData.content[indexPath.row].word
+        content.secondaryText = wordsAndDefinitionData.content[indexPath.row].definition
         
         cell.contentConfiguration = content
+        
         return cell
     }
 }

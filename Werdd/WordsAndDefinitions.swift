@@ -27,7 +27,7 @@ protocol WordAndDefinitionsDetails {
     var definition: String { get set }
 }
             
-class Words {
+class Words: WordAndDefinitionsDetails {
     var word: String
     var definition: String
     
