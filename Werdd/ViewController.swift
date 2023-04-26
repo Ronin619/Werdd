@@ -101,7 +101,7 @@ class ViewController: UIViewController {
             containerView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 30),
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
+            containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
         ])
     }
     
@@ -148,13 +148,13 @@ class ViewController: UIViewController {
     func setUpTableView() {
         view.addSubview(tableView)
         tableView.dataSource = self
+        tableView.layer.cornerRadius = 20
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            
         ])
     }
     
