@@ -7,12 +7,6 @@
 
 import UIKit
 
-struct wordBank {
-    let word: String
-    let speech: String
-    let definition: String
-}
-
 class ViewController: UIViewController {
     
     var wordsAndDefinitionData = WordsAndDefinitions()
@@ -109,7 +103,7 @@ class ViewController: UIViewController {
         containerView.addSubview(wordLabel)
         
         NSLayoutConstraint.activate([
-            wordLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+            wordLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
             wordLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
         ])
     }
@@ -121,6 +115,7 @@ class ViewController: UIViewController {
             wordDefinitionLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 10),
             wordDefinitionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             wordDefinitionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            wordDefinitionLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10)
         ])
     }
     
@@ -140,8 +135,8 @@ class ViewController: UIViewController {
         refreshButton.addTarget(self, action: #selector(refreshButtonPressed), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            refreshButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
-            refreshButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
+            refreshButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
+            refreshButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -5),
         ])
     }
     
@@ -178,11 +173,12 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section:
         Int) -> Int {
+        
         return wordsAndDefinitionData.content.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath:
-        IndexPath) -> UITableViewCell {
+                   IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
         var content = cell.defaultContentConfiguration()
@@ -195,3 +191,5 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
 }
+
+

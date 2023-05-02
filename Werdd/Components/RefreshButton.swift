@@ -21,7 +21,7 @@ class RefreshButton: UIButton {
     private func setUpUI() {
         tintColor = .white
         
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .heavy, scale: .large)
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .heavy, scale: .small)
         let image = UIImage(systemName: "arrow.clockwise.circle", withConfiguration: symbolConfiguration)
         setImage(image, for: .normal)
     }
