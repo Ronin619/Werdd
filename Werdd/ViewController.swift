@@ -67,7 +67,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "sandGrey")
+        view.backgroundColor = UIColor(named: "lightGrey")
         
         setUpHeaderLabel()
         setUpContainerView()
