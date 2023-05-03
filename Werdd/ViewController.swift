@@ -53,9 +53,10 @@ class ViewController: UIViewController {
         return label
     }()
     
-    let tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
         return tableView
     }()
     
@@ -185,6 +186,7 @@ extension ViewController: UITableViewDataSource {
         
         content.text = wordsAndDefinitionData.content[indexPath.row].word
         content.secondaryText = wordsAndDefinitionData.content[indexPath.row].definition
+        cell.backgroundColor = UIColor(named: "orange")
         
         cell.contentConfiguration = content
         
