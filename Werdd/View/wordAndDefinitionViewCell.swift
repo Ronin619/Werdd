@@ -29,7 +29,16 @@ class wordAndDefinitionViewCell: UITableViewCell {
     private let pronounLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Roboto-Regular", size: 8)
+        label.font = UIFont(name: "Roboto-Italic", size: 8)
+        label.textColor = .black
+        label.textAlignment = .left
+        return label
+    }()
+    
+    private let definitionLabel: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Roboto-Regular", size: 10)
         label.textColor = .black
         label.textAlignment = .left
         return label
