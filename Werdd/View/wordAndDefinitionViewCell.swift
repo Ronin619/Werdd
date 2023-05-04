@@ -9,6 +9,8 @@ import UIKit
 
 class wordAndDefinitionViewCell: UITableViewCell {
     
+    static let cellID = "wordsAndDefinitionViewCell"
+    
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,5 +71,11 @@ class wordAndDefinitionViewCell: UITableViewCell {
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
         ])
+    }
+    
+    func configure(word: String, pronoun: String, definition: String) {
+        wordLabel.text = word
+        pronounLabel.text = pronoun
+        definitionLabel.text = definition
     }
 }

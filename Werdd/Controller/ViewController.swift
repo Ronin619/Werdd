@@ -58,6 +58,7 @@ class ViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor(named: "mint")
         tableView.dataSource = self
+        tableView.register(wordAndDefinitionViewCell.self, forCellReuseIdentifier: wordAndDefinitionViewCell.cellID)
         return tableView
     }()
     
@@ -175,21 +176,21 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section:
         Int) -> Int {
-        
         return wordsAndDefinitionData.content.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath:
-                   IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: wordAndDefinitionViewCell.cellID, for: indexPath) as? wordAndDefinitionViewCell else {
+            return UITableViewCell()
+        }
         
-        let cell = UITableViewCell()
         var content = cell.defaultContentConfiguration()
-        
+      
         content.text = wordsAndDefinitionData.content[indexPath.row].word
         content.secondaryText = wordsAndDefinitionData.content[indexPath.row].definition
-        cell.backgroundColor = UIColor(named: "orange")
+ 
+       cell.contentConfiguration = content
         
-        cell.contentConfiguration = content
         
         return cell
     }
