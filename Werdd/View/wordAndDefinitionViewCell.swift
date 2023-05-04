@@ -55,7 +55,19 @@ class wordAndDefinitionViewCell: UITableViewCell {
     }
     
     private func setUpUI() {
+        backgroundColor = UIColor(named: "orange")
         
+        stackView.addArrangedSubview(wordLabel)
+        stackView.addArrangedSubview(pronounLabel)
+        stackView.addArrangedSubview(definitionLabel)
+        
+        contentView.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 26),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+        ])
     }
-
 }
