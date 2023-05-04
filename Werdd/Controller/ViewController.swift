@@ -56,6 +56,7 @@ class ViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = UIColor(named: "mint")
         tableView.dataSource = self
         return tableView
     }()

@@ -18,6 +18,7 @@
 		3060788829E79CC4003F8288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3060788729E79CC4003F8288 /* ViewController.swift */; };
 		3060788D29E79CC5003F8288 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3060788C29E79CC5003F8288 /* Assets.xcassets */; };
 		3060789029E79CC5003F8288 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3060788E29E79CC5003F8288 /* LaunchScreen.storyboard */; };
+		30BA615F2A03341C00181B7A /* wordAndDefinitionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA615E2A03341C00181B7A /* wordAndDefinitionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		3060788C29E79CC5003F8288 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3060788F29E79CC5003F8288 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3060789129E79CC5003F8288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30BA615E2A03341C00181B7A /* wordAndDefinitionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordAndDefinitionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,11 +86,12 @@
 		3060788229E79CC4003F8288 /* Werdd */ = {
 			isa = PBXGroup;
 			children = (
+				30BA615D2A0333D100181B7A /* View */,
+				30BA615C2A0331D800181B7A /* Controller */,
 				3045B0F529F0D531008DCEF9 /* Components */,
 				3053C33529E8E9700073DAC2 /* Fonts */,
 				3060788329E79CC4003F8288 /* AppDelegate.swift */,
 				3060788529E79CC4003F8288 /* SceneDelegate.swift */,
-				3060788729E79CC4003F8288 /* ViewController.swift */,
 				3056680229F8A6D100AC13B8 /* WordBank.swift */,
 				3056680429F8AF8D00AC13B8 /* WordsAndDefinitions.swift */,
 				3060788C29E79CC5003F8288 /* Assets.xcassets */,
@@ -96,6 +99,22 @@
 				3060789129E79CC5003F8288 /* Info.plist */,
 			);
 			path = Werdd;
+			sourceTree = "<group>";
+		};
+		30BA615C2A0331D800181B7A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3060788729E79CC4003F8288 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		30BA615D2A0333D100181B7A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				30BA615E2A03341C00181B7A /* wordAndDefinitionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +196,7 @@
 				3060788429E79CC4003F8288 /* AppDelegate.swift in Sources */,
 				3060788629E79CC4003F8288 /* SceneDelegate.swift in Sources */,
 				3056680329F8A6D100AC13B8 /* WordBank.swift in Sources */,
+				30BA615F2A03341C00181B7A /* wordAndDefinitionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
