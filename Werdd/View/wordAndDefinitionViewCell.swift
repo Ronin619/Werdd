@@ -17,6 +17,15 @@ class wordAndDefinitionViewCell: UITableViewCell {
         return stackView
     }()
     
+    private let wordLabel: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Roboto-Bold", size: 10)
+        label.textColor = .black
+        label.textAlignment = .left
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
