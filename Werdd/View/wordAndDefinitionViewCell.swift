@@ -26,6 +26,15 @@ class wordAndDefinitionViewCell: UITableViewCell {
         return label
     }()
     
+    private let pronounLabel: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Roboto-Regular", size: 8)
+        label.textColor = .black
+        label.textAlignment = .left
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
