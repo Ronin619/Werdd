@@ -11,24 +11,24 @@ class wordAndDefinitionViewCell: UITableViewCell {
     
     static let cellID = "wordsAndDefinitionViewCell"
     
-    private let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
-        return stackView
+    private let containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(named: "orange")
+        view.layer.cornerRadius = 20
+        return view
     }()
     
     private let wordLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Roboto-Bold", size: 10)
+        label.font = UIFont(name: "Roboto-Bold", size: 12)
         label.textColor = .black
         label.textAlignment = .left
         return label
     }()
     
-    private let pronounLabel: UILabel = {
+    private let speechLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Roboto-Italic", size: 8)
@@ -49,33 +49,43 @@ class wordAndDefinitionViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        setUpUI()
+        setUpViews()
     }
     
     required init?(coder: NSCoder) {
-        return nil
+        nil
     }
     
-    private func setUpUI() {
-        backgroundColor = UIColor(named: "orange")
+    private func setUpViews() {
         
-        stackView.addArrangedSubview(wordLabel)
-        stackView.addArrangedSubview(pronounLabel)
-        stackView.addArrangedSubview(definitionLabel)
+        containerView.addSubview(wordLabel)
+        containerView.addSubview(speechLabel)
+        containerView.addSubview(definitionLabel)
         
-        contentView.addSubview(stackView)
+        contentView.addSubview(containerView)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 26),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+            containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
+            
+            wordLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+            wordLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            
+            speechLabel.leadingAnchor.constraint(equalTo: wordLabel.trailingAnchor, constant: 4),
+            speechLabel.bottomAnchor.constraint(equalTo: wordLabel.bottomAnchor),
+            
+            definitionLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 5),
+            definitionLabel.leadingAnchor.constraint(equalTo: wordLabel.leadingAnchor),
+            definitionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -4),
+            definitionLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
         ])
     }
     
-    func configure(word: String, pronoun: String, definition: String) {
-        wordLabel.text = word
-        pronounLabel.text = pronoun
-        definitionLabel.text = definition
+    func configure(with Words: Words) {
+        wordLabel.text = Words.word
+        speechLabel.text = Words.speech
+        definitionLabel.text = Words.definition
     }
 }
