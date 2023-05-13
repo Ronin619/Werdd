@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     var wordsAndDefinitionData = WordsAndDefinitions()
     
@@ -53,16 +53,16 @@ class ViewController: UIViewController {
         return label
     }()
     
-    lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = UIColor(named: "lightGrey")
-        tableView.dataSource = self
-        tableView.layer.cornerRadius = 30
-        tableView.separatorStyle = .none
-        tableView.register(wordAndDefinitionViewCell.self, forCellReuseIdentifier: wordAndDefinitionViewCell.cellID)
-        return tableView
-    }()
+//        lazy var tableView: UITableView = {
+//        let tableView = UITableView()
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
+//        tableView.backgroundColor = UIColor(named: "lightGrey")
+//        tableView.dataSource = self
+//        tableView.layer.cornerRadius = 30
+//        tableView.separatorStyle = .none
+//        tableView.register(wordAndDefinitionViewCell.self, forCellReuseIdentifier: wordAndDefinitionViewCell.cellID)
+//        return tableView
+//    }()
     
     let refreshButton: RefreshButton = {
         let button = RefreshButton(frame: .zero)
@@ -145,18 +145,18 @@ class ViewController: UIViewController {
         ])
     }
     
-    func setUpTableView() {
-        view.addSubview(tableView)
-        tableView.dataSource = self
-        tableView.layer.cornerRadius = 20
-        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-    }
+//    func setUpTableView() {
+//        view.addSubview(tableView)
+//        tableView.dataSource = self
+//        tableView.layer.cornerRadius = 20
+//
+//        NSLayoutConstraint.activate([
+//            tableView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
+//            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//        ])
+//    }
     
     @objc func refreshButtonPressed() {
         let randomWord = randomWord()
@@ -175,23 +175,23 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section:
-        Int) -> Int {
-        return wordsAndDefinitionData.content.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: wordAndDefinitionViewCell.cellID, for: indexPath) as? wordAndDefinitionViewCell else {
-            return UITableViewCell()
-        }
-        
-        cell.configure(with: wordsAndDefinitionData.content[indexPath.row])
-        
-        return cell
-    }
-}
+//extension ViewController: UITableViewDataSource {
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section:
+//        Int) -> Int {
+//        return wordsAndDefinitionData.content.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//      guard let cell = tableView.dequeueReusableCell(withIdentifier: wordAndDefinitionViewCell.cellID, for: indexPath) as? wordAndDefinitionViewCell else {
+//            return UITableViewCell()
+//        }
+//
+//        cell.configure(with: wordsAndDefinitionData.content[indexPath.row])
+//
+//        return cell
+//    }
+//}
 
 
