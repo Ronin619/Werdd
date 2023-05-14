@@ -15,6 +15,7 @@ class WordAndDefViewCell: UICollectionViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(named: "lightOrange")
+        view.layer.cornerRadius = 20
         return view
        }()
     
@@ -58,12 +59,15 @@ class WordAndDefViewCell: UICollectionViewCell {
     }
     
     private func setUpUI() {
-        
         contentView.addSubview(containerView)
+        contentView.backgroundColor = UIColor(named: "lightGrey")
         
         containerView.addSubview(wordLabel)
         containerView.addSubview(speechLabel)
         containerView.addSubview(definitionLabel)
+        
+        wordLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        speechLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -72,15 +76,20 @@ class WordAndDefViewCell: UICollectionViewCell {
             containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
             wordLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-            wordLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            wordLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
             
-            speechLabel.leadingAnchor.constraint(equalTo: wordLabel.trailingAnchor, constant: 5),
+//            speechLabel.leadingAnchor.constraint(equalTo: wordLabel.trailingAnchor, constant: 4),
+//            speechLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -90),
+//            speechLabel.bottomAnchor.constraint(equalTo: wordLabel.bottomAnchor),
+//
+            speechLabel.leadingAnchor.constraint(equalTo: wordLabel.trailingAnchor, constant: 4),
+            speechLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -9),
             speechLabel.bottomAnchor.constraint(equalTo: wordLabel.bottomAnchor),
                         
-            definitionLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 2),
+            definitionLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 5),
             definitionLabel.leadingAnchor.constraint(equalTo: wordLabel.leadingAnchor),
-            definitionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6),
-            definitionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
+            definitionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4),
+            definitionLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10),
         ])
     }
     

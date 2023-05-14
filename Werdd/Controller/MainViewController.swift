@@ -61,6 +61,8 @@ class mainViewController: UIViewController {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(WordAndDefViewCell.self, forCellWithReuseIdentifier: WordAndDefViewCell.identifier)
         return collectionView
     }()
@@ -148,10 +150,9 @@ class mainViewController: UIViewController {
     
     func setUpCollectionView() {
         view.addSubview(collectionView)
-        view.backgroundColor = .white
         
         collectionView.dataSource = self
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = UIColor(named: "lightGrey")
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
@@ -190,11 +191,16 @@ extension mainViewController: UICollectionViewDataSource {
         WordAndDefViewCell.identifier, for: indexPath) as? WordAndDefViewCell else {
             return UICollectionViewCell()
         }
-        cell.contentView.backgroundColor = UIColor(named: "lightOrange")
+        cell.contentView.backgroundColor = UIColor(named: "lightGrey")
         cell.configure(with: wordsAndDefinitionData.content[indexPath.row])
         return cell
     }
-    
+}
+
+extension mainViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Collection view cell tapped at index: \(indexPath.row)")
+    }
 }
 
 
