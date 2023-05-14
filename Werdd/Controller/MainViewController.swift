@@ -56,12 +56,12 @@ class mainViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: view.frame.size.width/3.5, height: view.frame.size.width/3)
+        layout.itemSize = CGSize(width: 200, height: 120)
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(WordAndDefViewCell.self, forCellWithReuseIdentifier: WordAndDefViewCell.identifier)
         return collectionView
     }()
     
@@ -181,13 +181,13 @@ class mainViewController: UIViewController {
 extension mainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        cell.contentView.backgroundColor = UIColor(named: "orange")
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WordAndDefViewCell.identifier, for: indexPath)
+        cell.contentView.backgroundColor = UIColor(named: "lightOrange")
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5//wordsAndDefinitionData.content.count
+        return wordsAndDefinitionData.content.count
     }
 }
 
