@@ -53,6 +53,17 @@ class MainViewController: UIViewController {
         return label
     }()
     
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: view.frame.size.width/3.5, height: view.frame.size.width/3)
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(UITableViewCell.self, forCellWithReuseIdentifier: "Cell")
+        return collectionView
+    }()
+    
 //        lazy var tableView: UITableView = {
 //        let tableView = UITableView()
 //        tableView.translatesAutoresizingMaskIntoConstraints = false
