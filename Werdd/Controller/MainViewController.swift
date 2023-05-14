@@ -200,6 +200,8 @@ extension mainViewController: UICollectionViewDataSource {
 extension mainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Collection view cell tapped at index: \(indexPath.row)")
+        navigationController?.pushViewController(secondViewController(), animated: true)
+
     }
 }
 

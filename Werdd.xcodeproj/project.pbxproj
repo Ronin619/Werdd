@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3045B0F329F0D511008DCEF9 /* RefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045B0F229F0D511008DCEF9 /* RefreshButton.swift */; };
+		30530A0D2A11571200622DF7 /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30530A0C2A11571200622DF7 /* secondViewController.swift */; };
 		3053C34329E8EED50073DAC2 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3053C34229E8EED50073DAC2 /* Roboto-Bold.ttf */; };
 		3053C34529E8EEDE0073DAC2 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3053C34429E8EEDE0073DAC2 /* Roboto-Italic.ttf */; };
 		3053C34729E8EEE50073DAC2 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3053C34629E8EEE50073DAC2 /* Roboto-Regular.ttf */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		3045B0F229F0D511008DCEF9 /* RefreshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshButton.swift; sourceTree = "<group>"; };
+		30530A0C2A11571200622DF7 /* secondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
 		3053C34229E8EED50073DAC2 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../../../Roboto/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		3053C34429E8EEDE0073DAC2 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "../../../Roboto/Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		3053C34629E8EEE50073DAC2 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../../Roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				3060788729E79CC4003F8288 /* MainViewController.swift */,
+				30530A0C2A11571200622DF7 /* secondViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30530A0D2A11571200622DF7 /* secondViewController.swift in Sources */,
 				3056680529F8AF8D00AC13B8 /* WordsAndDefinitions.swift in Sources */,
 				3060788829E79CC4003F8288 /* MainViewController.swift in Sources */,
 				3045B0F329F0D511008DCEF9 /* RefreshButton.swift in Sources */,
