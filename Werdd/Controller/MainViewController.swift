@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class mainViewController: UIViewController {
     
     var wordsAndDefinitionData = WordsAndDefinitions()
     
@@ -57,23 +57,13 @@ class MainViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: view.frame.size.width/3.5, height: view.frame.size.width/3)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(UITableViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         return collectionView
     }()
-    
-//        lazy var tableView: UITableView = {
-//        let tableView = UITableView()
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//        tableView.backgroundColor = UIColor(named: "lightGrey")
-//        tableView.dataSource = self
-//        tableView.layer.cornerRadius = 30
-//        tableView.separatorStyle = .none
-//        tableView.register(wordAndDefinitionViewCell.self, forCellReuseIdentifier: wordAndDefinitionViewCell.cellID)
-//        return tableView
-//    }()
     
     let refreshButton: RefreshButton = {
         let button = RefreshButton(frame: .zero)
@@ -91,7 +81,7 @@ class MainViewController: UIViewController {
         setUpWordDefinitionLabel()
         setUpWordSpeechLabel()
         setUpButton()
-        setUpTableView()
+        setUpCollectionView()
     }
     
     func setUpHeaderLabel() {
@@ -156,18 +146,20 @@ class MainViewController: UIViewController {
         ])
     }
     
-//    func setUpTableView() {
-//        view.addSubview(tableView)
-//        tableView.dataSource = self
-//        tableView.layer.cornerRadius = 20
-//
-//        NSLayoutConstraint.activate([
-//            tableView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
-//            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
-//    }
+    func setUpCollectionView() {
+        view.addSubview(collectionView)
+        view.backgroundColor = .white
+        
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .white
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
     
     @objc func refreshButtonPressed() {
         let randomWord = randomWord()
@@ -186,23 +178,17 @@ class MainViewController: UIViewController {
     
 }
 
-//extension ViewController: UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section:
-//        Int) -> Int {
-//        return wordsAndDefinitionData.content.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//      guard let cell = tableView.dequeueReusableCell(withIdentifier: wordAndDefinitionViewCell.cellID, for: indexPath) as? wordAndDefinitionViewCell else {
-//            return UITableViewCell()
-//        }
-//
-//        cell.configure(with: wordsAndDefinitionData.content[indexPath.row])
-//
-//        return cell
-//    }
-//}
+extension mainViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        cell.contentView.backgroundColor = UIColor(named: "orange")
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5//wordsAndDefinitionData.content.count
+    }
+}
 
 
