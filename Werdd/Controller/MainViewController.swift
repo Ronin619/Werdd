@@ -9,7 +9,18 @@ import UIKit
 
 class mainViewController: UIViewController {
     
-    var wordsAndDefinitionData = WordsAndDefinitions()
+    let wordArr = [
+        WordAndDef(word: "Recursion", speech: "noun", definition: "Recursion is when a function calls itself repeatedly until a base case is met."),
+        WordAndDef(word: "FlexBox", speech: "noun", definition: "A CSS layout that organizes components within a container. It fills up all available space by adjusting the width and height of all components within."),
+        WordAndDef(word: "Hoisting", speech: "noun", definition: "In javascript, hoisting is when a variable or function that’s been declared and not initialized is “moved” up to the top of its scope. This allows developers to call functions or utilize variables before they appear in the code."),
+        WordAndDef(word: "Currying", speech: "noun", definition: "Transform a function with multiple arguments into a series of nested function that take a single argument."),
+        WordAndDef(word: "Memoization", speech: "noun", definition: "Data is ran once and the result is stored so it can be accessed again later to avoid redundancy."),
+        WordAndDef(word: "DOM", speech: "noun", definition: "Document Object Model is a data structure that defines the way a document is accessed and manipulated."),
+        WordAndDef(word: "Closure", speech: "noun", definition: "Is a form of lexical scoping where an inner function preserves data (usually variables) from the outer function even after an outer functions return statement has ran."),
+        WordAndDef(word: "OOP", speech: "noun", definition: "A programming model that organizes data in objects. Data is organized in objects for reusability and programs more efficient and easier to understand."),
+        WordAndDef(word: "Stacks", speech: "noun", definition: "linear data structure in which elements can be inserted and deleted only from one side of the list, called the top. The last element inserted is the first one to be removed."),
+        WordAndDef(word: "Queues", speech: "noun", definition: "linear data structure in which elements can be inserted only from one side of the list called rear, and the elements can be deleted only from the other side called the front."),
+    ]
     
     let headerLabel: UILabel = {
         let label = UILabel()
@@ -163,18 +174,14 @@ class mainViewController: UIViewController {
     }
     
     @objc func refreshButtonPressed() {
-        let randomWord = randomWord()
-        updateWordView(withWord: randomWord)
+        updateWordView()
     }
     
-    func randomWord() -> wordBank? {
-        return wordArr.randomElement()
-    }
-    
-    func updateWordView(withWord word: wordBank?) {
-        wordLabel.text = word?.word
-        wordDefinitionLabel.text = word?.definition
-        wordSpeechLabel.text = word?.speech
+    func updateWordView() {
+        let randomWord = wordArr.randomElement()
+        wordLabel.text = randomWord?.word
+        wordDefinitionLabel.text = randomWord?.definition
+        wordSpeechLabel.text = randomWord?.speech
     }
     
 }
@@ -182,7 +189,7 @@ class mainViewController: UIViewController {
 extension mainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return wordsAndDefinitionData.content.count
+        return wordArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->
@@ -192,14 +199,14 @@ extension mainViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.contentView.backgroundColor = UIColor(named: "lightGrey")
-        cell.configure(with: wordsAndDefinitionData.content[indexPath.row])
+        cell.configure(with: wordArr[indexPath.row])
+        print(wordArr[indexPath.row])
         return cell
     }
 }
 
 extension mainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Collection view cell tapped at index: \(indexPath.row)")
         navigationController?.pushViewController(secondViewController(), animated: true)
     }
 }

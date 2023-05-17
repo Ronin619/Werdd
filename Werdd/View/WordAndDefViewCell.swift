@@ -93,9 +93,9 @@ class WordAndDefViewCell: UICollectionViewCell {
         ])
     }
     
-    func configure(with Words: Words) {
-        wordLabel.text = Words.word
-        speechLabel.text = Words.speech
-        definitionLabel.text = Words.definition
+    func configure(with WordsAndDef: WordAndDef) {
+        wordLabel.text = WordsAndDef.word
+        speechLabel.text = WordsAndDef.speech
+        definitionLabel.text = WordsAndDef.definition
       }
 }

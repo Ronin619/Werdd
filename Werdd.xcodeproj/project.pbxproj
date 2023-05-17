@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3045B0F329F0D511008DCEF9 /* RefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045B0F229F0D511008DCEF9 /* RefreshButton.swift */; };
+		30471AD62A14692400CACE9D /* wordInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30471AD52A14692400CACE9D /* wordInfoView.swift */; };
 		30530A0D2A11571200622DF7 /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30530A0C2A11571200622DF7 /* secondViewController.swift */; };
 		3053C34329E8EED50073DAC2 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3053C34229E8EED50073DAC2 /* Roboto-Bold.ttf */; };
 		3053C34529E8EEDE0073DAC2 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3053C34429E8EEDE0073DAC2 /* Roboto-Italic.ttf */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		3045B0F229F0D511008DCEF9 /* RefreshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshButton.swift; sourceTree = "<group>"; };
+		30471AD52A14692400CACE9D /* wordInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordInfoView.swift; sourceTree = "<group>"; };
 		30530A0C2A11571200622DF7 /* secondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
 		3053C34229E8EED50073DAC2 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../../../Roboto/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		3053C34429E8EEDE0073DAC2 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "../../../Roboto/Roboto-Italic.ttf"; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				30D59FD62A1072F5000DF538 /* WordAndDefViewCell.swift */,
+				30471AD52A14692400CACE9D /* wordInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				3045B0F329F0D511008DCEF9 /* RefreshButton.swift in Sources */,
 				3060788429E79CC4003F8288 /* AppDelegate.swift in Sources */,
 				30D59FD72A1072F5000DF538 /* WordAndDefViewCell.swift in Sources */,
+				30471AD62A14692400CACE9D /* wordInfoView.swift in Sources */,
 				3060788629E79CC4003F8288 /* SceneDelegate.swift in Sources */,
 				3056680329F8A6D100AC13B8 /* WordBank.swift in Sources */,
 			);
