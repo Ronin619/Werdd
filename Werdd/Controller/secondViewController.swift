@@ -9,47 +9,32 @@ import UIKit
 
 class secondViewController: UIViewController {
     
-    let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+    let wordArr: WordAndDef
     
-    let definitionView: UIView = {
-       let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "greyBlue")
-        view.layer.cornerRadius = 20
-        return view
-    }()
+    init(wordArr: WordAndDef) {
+        self.wordArr = wordArr
+        
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    let synonymsView: UIView = {
-       let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "jungle")
-        view.layer.cornerRadius = 20
-        return view
-    }()
+    required init?(coder: NSCoder) {
+        return nil
+    }
     
-    let antonymsView: UIView = {
-       let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "coral")
-        view.layer.cornerRadius = 20
-        return view
-    }()
-    
-    let exampleUsageView: UIView = {
-       let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "lightOrange")
-        view.layer.cornerRadius = 20
-        return view
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        view.backgroundColor = UIColor(named: "lightGrey")
+        
+        navigationSetUp()
     }
-
+    
+    private func navigationSetUp() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let textAttribute = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.largeTitleTextAttributes = textAttribute
+        
+        navigationItem.title = wordArr.word
+    }
 }
