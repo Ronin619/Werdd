@@ -23,7 +23,7 @@ class WordAndDefViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Roboto-Bold", size: 12)
-        label.textColor = .black
+        label.textColor = .label
         label.textAlignment = .left
         return label
     }()
@@ -32,7 +32,7 @@ class WordAndDefViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Roboto-Italic", size: 8)
-        label.textColor = .black
+        label.textColor = .label
         label.textAlignment = .left
         return label
     }()
@@ -41,9 +41,9 @@ class WordAndDefViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Roboto-Regular", size: 10)
-        label.textColor = .black
+        label.textColor = .label
         label.textAlignment = .left
-        label.numberOfLines = 7
+        label.numberOfLines = 5
         label.lineBreakMode = .byWordWrapping
         return label
     }()
@@ -60,14 +60,14 @@ class WordAndDefViewCell: UICollectionViewCell {
     
     private func setUpUI() {
         contentView.addSubview(containerView)
-        contentView.backgroundColor = UIColor(named: "lightGrey")
+        contentView.backgroundColor = .red //UIColor(named: "lightGrey")
         
         containerView.addSubview(wordLabel)
         containerView.addSubview(speechLabel)
         containerView.addSubview(definitionLabel)
         
-        wordLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        speechLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+//        wordLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+//        speechLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -77,19 +77,15 @@ class WordAndDefViewCell: UICollectionViewCell {
             
             wordLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
             wordLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
-            
-//            speechLabel.leadingAnchor.constraint(equalTo: wordLabel.trailingAnchor, constant: 4),
-//            speechLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -90),
-//            speechLabel.bottomAnchor.constraint(equalTo: wordLabel.bottomAnchor),
-//
+            wordLabel.heightAnchor.constraint(equalToConstant: 24),
+
             speechLabel.leadingAnchor.constraint(equalTo: wordLabel.trailingAnchor, constant: 4),
-            speechLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -9),
-            speechLabel.bottomAnchor.constraint(equalTo: wordLabel.bottomAnchor),
+            speechLabel.centerYAnchor.constraint(equalTo: wordLabel.centerYAnchor),
                         
             definitionLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 5),
             definitionLabel.leadingAnchor.constraint(equalTo: wordLabel.leadingAnchor),
-            definitionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4),
-            definitionLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10),
+            definitionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -4),
+            definitionLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
         ])
     }
     
