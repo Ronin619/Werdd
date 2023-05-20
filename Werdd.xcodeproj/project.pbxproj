@@ -20,6 +20,7 @@
 		3060788829E79CC4003F8288 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3060788729E79CC4003F8288 /* MainViewController.swift */; };
 		3060788D29E79CC5003F8288 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3060788C29E79CC5003F8288 /* Assets.xcassets */; };
 		3060789029E79CC5003F8288 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3060788E29E79CC5003F8288 /* LaunchScreen.storyboard */; };
+		309A293C2A185C6E00B2439F /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A293B2A185C6E00B2439F /* APIConstants.swift */; };
 		30D59FD72A1072F5000DF538 /* WordAndDefViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D59FD62A1072F5000DF538 /* WordAndDefViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		3060788C29E79CC5003F8288 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3060788F29E79CC5003F8288 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3060789129E79CC5003F8288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		309A293B2A185C6E00B2439F /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		30D59FD62A1072F5000DF538 /* WordAndDefViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordAndDefViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +103,7 @@
 				3060788C29E79CC5003F8288 /* Assets.xcassets */,
 				3060788E29E79CC5003F8288 /* LaunchScreen.storyboard */,
 				3060789129E79CC5003F8288 /* Info.plist */,
+				309A293B2A185C6E00B2439F /* APIConstants.swift */,
 			);
 			path = Werdd;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				3045B0F329F0D511008DCEF9 /* RefreshButton.swift in Sources */,
 				3060788429E79CC4003F8288 /* AppDelegate.swift in Sources */,
 				30D59FD72A1072F5000DF538 /* WordAndDefViewCell.swift in Sources */,
+				309A293C2A185C6E00B2439F /* APIConstants.swift in Sources */,
 				30471AD62A14692400CACE9D /* wordInfoView.swift in Sources */,
 				3060788629E79CC4003F8288 /* SceneDelegate.swift in Sources */,
 				3056680329F8A6D100AC13B8 /* WordBank.swift in Sources */,
