@@ -7,7 +7,7 @@
 
 import UIKit
 
-class wordInfoView: UIViewController {
+class wordInfoView: UIView {
 
     let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -48,26 +48,35 @@ class wordInfoView: UIViewController {
         return view
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "lightGrey")
+    // Mark: - properties
+    let word: String?
+    let speech: String?
+    let definition: String?
+    
+    // Mark: - Initializer
+    init(isHidden: Bool = false, backgroundColor: UIColor? = .white, word: String?, speech: String?, definition: String) {
+        self.word = word
+        self.speech = speech
+        self.definition = definition
         
-        setUpUI()
+        super.init(frame: .zero)
+        
+        self.isHidden = isHidden
+        self.backgroundColor = backgroundColor
     }
     
-    func setUpUI() {
-        view.addSubview(stackView)
-        
+    required init?(coder: NSCoder) {
+        return nil
+    }
+    
+    func setUpUIView() {
+      
         stackView.addSubview(definitionView)
         stackView.addSubview(synonymsView)
         stackView.addSubview(antonymsView)
         stackView.addSubview(exampleUsageView)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             definitionView.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 40),
             definitionView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 30),
@@ -90,5 +99,4 @@ class wordInfoView: UIViewController {
             exampleUsageView.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.2),
         ])
     }
-
 }

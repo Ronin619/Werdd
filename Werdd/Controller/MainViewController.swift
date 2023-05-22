@@ -88,7 +88,7 @@ class mainViewController: UIViewController {
         view.addSubview(headerLabel)
         
         NSLayoutConstraint.activate([
-            headerLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            headerLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             headerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             headerLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor)
         ])
@@ -187,7 +187,6 @@ extension mainViewController: UICollectionViewDataSource {
         }
         cell.contentView.backgroundColor = UIColor(named: "lightGrey")
         cell.configure(with: wordArr[indexPath.row])
-        print(wordArr[indexPath.row])
         return cell
     }
 }
@@ -197,5 +196,4 @@ extension mainViewController: UICollectionViewDelegate {
         navigationController?.pushViewController(secondViewController(wordArr: wordArr[indexPath.row]), animated: true)
     }
 }
-
 
