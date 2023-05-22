@@ -13,42 +13,51 @@ class wordInfoView: UIView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.backgroundColor = .gray
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .leading
+        stackView.spacing = 20
         return stackView
     }()
     
-    let definitionView: UIView = {
-       let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "greyBlue")
-        view.layer.cornerRadius = 20
-        return view
+    let descriptionStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        return stackView
     }()
     
-    let synonymsView: UIView = {
-       let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "jungle")
-        view.layer.cornerRadius = 20
-        return view
+    let speechLabel: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.isHidden = true
+        label.textAlignment = .left
+        label.font = UIFont(name: "Roboto-Regular", size: 12)
     }()
     
-    let antonymsView: UIView = {
-       let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "coral")
-        view.layer.cornerRadius = 20
-        return view
+    let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.isHidden = true
+        label.textAlignment = .left
+        label.font = UIFont(name: "Roboto-Italic", size: 12)
+        return label
     }()
     
-    let exampleUsageView: UIView = {
-       let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "lightOrange")
-        view.layer.cornerRadius = 20
-        return view
+    let wordLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .left
+        label.font = UIFont(name: "Roboto-Italic", size: 20)
+        return label
     }()
-
-    // Mark: - properties
+    
     let word: String?
     let speech: String?
     let definition: String?
@@ -64,13 +73,14 @@ class wordInfoView: UIView {
         self.isHidden = isHidden
         self.backgroundColor = backgroundColor
     }
-    
+    // Mark: - this is to be here even though we don't need it (mainly for ObjC)
     required init?(coder: NSCoder) {
         return nil
     }
     
     func setUpUIView() {
-      
+        layer.cornerRadius = 20
+        
         stackView.addSubview(definitionView)
         stackView.addSubview(synonymsView)
         stackView.addSubview(antonymsView)

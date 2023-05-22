@@ -193,7 +193,7 @@ extension mainViewController: UICollectionViewDataSource {
 
 extension mainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(secondViewController(wordArr: wordArr[indexPath.row]), animated: true)
+        navigationController?.pushViewController(wordDetailsViewController(wordArr: wordArr[indexPath.row]), animated: true)
     }
 }
 
