@@ -33,7 +33,7 @@ class WordInfoView: UIView {
         label.textColor = .black
         label.isHidden = true
         label.textAlignment = .left
-        label.font = UIFont(name: "Roboto-Regular", size: 12)
+        label.font = UIFont(name: "Roboto-Regular", size: 10)
         return label
     }()
     
@@ -50,11 +50,11 @@ class WordInfoView: UIView {
     let wordLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
+        label.textColor = .white
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
-        label.font = UIFont(name: "Roboto-Italic", size: 20)
+        label.font = UIFont(name: "Roboto-Italic", size: 15)
         return label
     }()
     
