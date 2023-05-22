@@ -35,6 +35,7 @@ class wordInfoView: UIView {
         label.isHidden = true
         label.textAlignment = .left
         label.font = UIFont(name: "Roboto-Regular", size: 12)
+        return label
     }()
     
     let descriptionLabel: UILabel = {
@@ -81,32 +82,35 @@ class wordInfoView: UIView {
     func setUpUIView() {
         layer.cornerRadius = 20
         
-        stackView.addSubview(definitionView)
-        stackView.addSubview(synonymsView)
-        stackView.addSubview(antonymsView)
-        stackView.addSubview(exampleUsageView)
+        wordLabel.text = word
+        speechLabel.text = speech
+        descriptionLabel.text = definition
         
+        speechLabel.isHidden = speech == nil
+        
+        addDescriptionStackView()
+        addWordLabel()
+        addStackView()
+    }
+    
+    private func addDescriptionStackView() {
+        descriptionStackView.addArrangedSubview(speechLabel)
+        descriptionStackView.addArrangedSubview(descriptionLabel)
+        stackView.addArrangedSubview(descriptionStackView)
+    }
+    
+    private func addWordLabel() {
+        stackView.addArrangedSubview(wordLabel)
+    }
+    
+    private func addStackView() {
+        addSubview(stackView)
         NSLayoutConstraint.activate([
-            
-            definitionView.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 40),
-            definitionView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 30),
-            definitionView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -30),
-            definitionView.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.2),
-            
-            synonymsView.topAnchor.constraint(equalTo: definitionView.bottomAnchor, constant: 20),
-            synonymsView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 30),
-            synonymsView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -30),
-            synonymsView.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.13),
-            
-            antonymsView.topAnchor.constraint(equalTo: synonymsView.bottomAnchor, constant: 20),
-            antonymsView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 30),
-            antonymsView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -30),
-            antonymsView.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.13),
-            
-            exampleUsageView.topAnchor.constraint(equalTo: antonymsView.bottomAnchor, constant: 20),
-            exampleUsageView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 30),
-            exampleUsageView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -30),
-            exampleUsageView.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.2),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
         ])
     }
+    
 }
