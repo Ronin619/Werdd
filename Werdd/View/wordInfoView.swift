@@ -7,12 +7,11 @@
 
 import UIKit
 
-class wordInfoView: UIView {
+class WordInfoView: UIView {
 
     let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .gray
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .leading
@@ -61,18 +60,20 @@ class wordInfoView: UIView {
     
     let word: String?
     let speech: String?
-    let definition: String?
+    let descriptionText: String?
     
     // Mark: - Initializer
-    init(isHidden: Bool = false, backgroundColor: UIColor? = .white, word: String?, speech: String?, definition: String) {
+    init(isHidden: Bool = false, backgroundColor: UIColor? = .white, word: String?, speech: String?, descriptionText: String) {
         self.word = word
         self.speech = speech
-        self.definition = definition
+        self.descriptionText = descriptionText
         
         super.init(frame: .zero)
         
         self.isHidden = isHidden
         self.backgroundColor = backgroundColor
+        
+        setUpUIView()
     }
     // Mark: - this is to be here even though we don't need it (mainly for ObjC)
     required init?(coder: NSCoder) {
@@ -84,7 +85,7 @@ class wordInfoView: UIView {
         
         wordLabel.text = word
         speechLabel.text = speech
-        descriptionLabel.text = definition
+        descriptionLabel.text = descriptionText
         
         speechLabel.isHidden = speech == nil
         

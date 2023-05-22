@@ -11,5 +11,9 @@ struct WordAndDef {
     let word: String
     let speech: String
     let definition: String
+    
+    let synonyms: [String]?
+    let antonyms: [String]?
+    let examples: [String]?
 }
         

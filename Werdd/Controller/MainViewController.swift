@@ -7,7 +7,7 @@
 
 import UIKit
 
-class mainViewController: UIViewController {
+class MainViewController: UIViewController, UICollectionViewDelegate {
     
     let headerLabel: UILabel = {
         let label = UILabel()
@@ -173,7 +173,7 @@ class mainViewController: UIViewController {
     
 }
 
-extension mainViewController: UICollectionViewDataSource {
+extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return wordArr.count
@@ -191,9 +191,9 @@ extension mainViewController: UICollectionViewDataSource {
     }
 }
 
-extension mainViewController: UICollectionViewDelegate {
+extension MainViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(wordDetailsViewController(wordArr: wordArr[indexPath.row]), animated: true)
+        navigationController?.pushViewController(WordDetailsViewController(wordArr: wordArr[indexPath.row]), animated: true)
     }
 }
 
