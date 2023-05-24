@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UICollectionViewDelegate {
+class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBarDelegate {
     
     let headerLabel: UILabel = {
         let label = UILabel()
@@ -24,6 +24,15 @@ class MainViewController: UIViewController, UICollectionViewDelegate {
         view.layer.cornerRadius = 20
         return view
     }()
+    
+    let collectionContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 20
+        return view
+    }()
+
     
     let wordLabel: UILabel = {
         let label = UILabel()
@@ -56,8 +65,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate {
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: view.frame.size.width/2.2, height: view.frame.size.width/3.5)
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -71,6 +80,15 @@ class MainViewController: UIViewController, UICollectionViewDelegate {
         return button
     }()
     
+    let searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Search"
+        searchBar.searchBarStyle = .minimal
+        searchBar.isTranslucent = true
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        return searchBar
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "lightGrey")
@@ -82,6 +100,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate {
         setUpWordSpeechLabel()
         setUpButton()
         setUpCollectionView()
+        setUpSearchBar()
+        setUpCollectionContainerView()
     }
     
     func setUpHeaderLabel() {
@@ -148,15 +168,38 @@ class MainViewController: UIViewController, UICollectionViewDelegate {
     
     func setUpCollectionView() {
         view.addSubview(collectionView)
+        collectionContainerView.addSubview(collectionView)
         
         collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor(named: "lightGrey")
+        collectionView.backgroundColor = .white
         
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: collectionContainerView.topAnchor, constant: 80),
+            collectionView.leadingAnchor.constraint(equalTo: collectionContainerView.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: collectionContainerView.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: collectionContainerView.bottomAnchor, constant: -20)
+        ])
+    }
+    
+    func setUpCollectionContainerView() {
+        view.addSubview(collectionContainerView)
+        
+        NSLayoutConstraint.activate([
+            collectionContainerView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
+            collectionContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    func setUpSearchBar() {
+        collectionContainerView.addSubview(searchBar)
+
+        NSLayoutConstraint.activate([
+            searchBar.topAnchor.constraint(equalTo: collectionContainerView.topAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: collectionContainerView.leadingAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: collectionContainerView.trailingAnchor, constant: -100),
+            searchBar.bottomAnchor.constraint(equalTo: collectionView.topAnchor),
         ])
     }
     
@@ -185,7 +228,7 @@ extension MainViewController: UICollectionViewDataSource {
         WordAndDefViewCell.identifier, for: indexPath) as? WordAndDefViewCell else {
             return UICollectionViewCell()
         }
-        cell.contentView.backgroundColor = UIColor(named: "lightGrey")
+        cell.contentView.backgroundColor = UIColor(named: "Orange")
         cell.configure(with: wordArr[indexPath.row])
         return cell
     }
