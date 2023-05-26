@@ -82,11 +82,20 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     
     let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.placeholder = "Search"
+        searchBar.placeholder = "Find a word..."
         searchBar.searchBarStyle = .minimal
         searchBar.isTranslucent = true
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         return searchBar
+    }()
+    
+    let searchButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.frame = CGRect(x: 100, y: 100, width: 100, height: 50)
+        button.setTitle("Search", for: .normal)
+        button.setTitleColor(UIColor(named: "faceBookBlue"), for: .normal)
+        return button
     }()
     
     override func viewDidLoad() {
@@ -102,6 +111,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
         setUpCollectionView()
         setUpSearchBar()
         setUpCollectionContainerView()
+        setUpSearchButton()
     }
     
     func setUpHeaderLabel() {
@@ -200,6 +210,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
             searchBar.leadingAnchor.constraint(equalTo: collectionContainerView.leadingAnchor),
             searchBar.trailingAnchor.constraint(equalTo: collectionContainerView.trailingAnchor, constant: -100),
             searchBar.bottomAnchor.constraint(equalTo: collectionView.topAnchor),
+        ])
+    }
+    
+    func setUpSearchButton() {
+        collectionContainerView.addSubview(searchButton)
+        
+        NSLayoutConstraint.activate([
+            searchButton.topAnchor.constraint(equalTo: collectionContainerView.topAnchor),
+            searchButton.trailingAnchor.constraint(equalTo: collectionContainerView.trailingAnchor, constant: -40),
+            searchButton.bottomAnchor.constraint(equalTo: collectionView.topAnchor),
         ])
     }
     
