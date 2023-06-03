@@ -224,18 +224,54 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     }
     
     @objc func refreshButtonPressed() {
-        updateWordView()
-    }
+        let headers = [
+         "X-RapidAPI-Key": APIConstants.key,
+         "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com"
+        ]
+        
+        guard let randomWordURL = URL(string: "https://wordsapiv1.p.rapidapi.com/words/?random=true") else {
+            print("Invalid URL")
+            return
+       }
+        
+        var urlRequest = URLRequest(url: randomWordURL)
+        urlRequest.httpMethod = "GET"
+        urlRequest.allHTTPHeaderFields = headers
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            
+            do {
+                let randomWord = try JSONDecoder().decode(RandomWord.self, from: data)
+                DispatchQueue.main.async { [weak self] in
+                    self?.wordLabel.text = randomWord.word
+                    self?.wordDefinitionLabel.text = randomWord.results[0].definition
+                    self?.wordSpeechLabel.text = randomWord.results[0].partOfSpeech
+                }
+                print(randomWord)
+            }
+            catch {
+                print("Failed to convert \(error)")
+            }
+        }.resume()
+       
+//           wordDefinitionLabel.text = randomWord?.definition
+//           wordSpeechLabel.text = randomWord?.speech
+        }
     
-    func updateWordView() {
-        let randomWord = wordArr.randomElement()
-        wordLabel.text = randomWord?.word
-        wordDefinitionLabel.text = randomWord?.definition
-        wordSpeechLabel.text = randomWord?.speech
+    struct RandomWord: Codable {
+        var word: String
+        var results: [results]
     }
-    
-}
 
+    struct results: Codable {
+        var definition: String
+        var partOfSpeech: String
+    }
+}
+    
 extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
