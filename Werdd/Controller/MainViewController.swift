@@ -215,6 +215,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     
     func setUpSearchButton() {
         collectionContainerView.addSubview(searchButton)
+        searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             searchButton.topAnchor.constraint(equalTo: collectionContainerView.topAnchor),
@@ -250,16 +251,12 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
                     self?.wordDefinitionLabel.text = randomWord.results[0].definition
                     self?.wordSpeechLabel.text = randomWord.results[0].partOfSpeech
                 }
-                print(randomWord)
             }
             catch {
                 print("Failed to convert \(error)")
             }
         }.resume()
-       
-//           wordDefinitionLabel.text = randomWord?.definition
-//           wordSpeechLabel.text = randomWord?.speech
-        }
+    }
     
     struct RandomWord: Codable {
         var word: String
@@ -269,6 +266,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     struct results: Codable {
         var definition: String
         var partOfSpeech: String
+    }
+    
+    @objc func searchButtonPressed() {
+        print(searchBar.text)
     }
 }
     
