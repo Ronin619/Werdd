@@ -32,7 +32,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
         view.layer.cornerRadius = 20
         return view
     }()
-
+    
     
     let wordLabel: UILabel = {
         let label = UILabel()
@@ -204,7 +204,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     
     func setUpSearchBar() {
         collectionContainerView.addSubview(searchBar)
-
+        
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: collectionContainerView.topAnchor),
             searchBar.leadingAnchor.constraint(equalTo: collectionContainerView.leadingAnchor),
@@ -216,6 +216,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     func setUpSearchButton() {
         collectionContainerView.addSubview(searchButton)
         searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
+        searchButton.setTitleColor(.white, for: .highlighted)
         
         NSLayoutConstraint.activate([
             searchButton.topAnchor.constraint(equalTo: collectionContainerView.topAnchor),
@@ -226,14 +227,14 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     
     @objc func refreshButtonPressed() {
         let headers = [
-         "X-RapidAPI-Key": APIConstants.key,
-         "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com"
+            "X-RapidAPI-Key": APIConstants.key,
+            "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com"
         ]
         
         guard let randomWordURL = URL(string: "https://wordsapiv1.p.rapidapi.com/words/?random=true") else {
             print("Invalid URL")
             return
-       }
+        }
         
         var urlRequest = URLRequest(url: randomWordURL)
         urlRequest.httpMethod = "GET"
@@ -258,6 +259,38 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
         }.resume()
     }
     
+    @objc func searchButtonPressed() {
+//        let headers = [
+//            "X-RapidAPI-Key": APIConstants.key,
+//            "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com"
+//        ]
+//
+//        guard let wordSearchURL = URL(string: "https://wordsapiv1.p.rapidapi.com/words/words\("example")")
+//        else {
+//            print("Invalid URL")
+//            return
+//        }
+//
+//        var urlRequest = URLRequest(url: wordSearchURL)
+//        urlRequest.httpMethod = "GET"
+//        urlRequest.allHTTPHeaderFields = headers
+//
+//        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+//            guard let data = data, error == nil else {
+//                return
+//            }
+//
+//            do {
+//                let wordFetched = try JSONDecoder().decode(RandomWord.self, from: data)
+//                print(wordFetched)
+//            }
+//            catch {
+//                print("Failed to convert \(error)")
+//            }
+//        }
+        
+    }
+    
     struct RandomWord: Codable {
         var word: String
         var results: [results]
@@ -266,10 +299,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     struct results: Codable {
         var definition: String
         var partOfSpeech: String
-    }
-    
-    @objc func searchButtonPressed() {
-        print(searchBar.text)
     }
 }
     
