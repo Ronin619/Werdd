@@ -260,42 +260,41 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     }
     
     @objc func searchButtonPressed() {
-//        let headers = [
-//            "X-RapidAPI-Key": APIConstants.key,
-//            "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com"
-//        ]
-//
-//        guard let wordSearchURL = URL(string: "https://wordsapiv1.p.rapidapi.com/words/words\("example")")
-//        else {
-//            print("Invalid URL")
-//            return
-//        }
-//
-//        var urlRequest = URLRequest(url: wordSearchURL)
-//        urlRequest.httpMethod = "GET"
-//        urlRequest.allHTTPHeaderFields = headers
-//
-//        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-//            guard let data = data, error == nil else {
-//                return
-//            }
-//
-//            do {
-//                let wordFetched = try JSONDecoder().decode(RandomWord.self, from: data)
-//                print(wordFetched)
-//            }
-//            catch {
-//                print("Failed to convert \(error)")
-//            }
-//        }
-        
+        let headers = [
+            "X-RapidAPI-Key": APIConstants.key,
+            "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com"
+        ]
+
+        guard let wordSearchURL = URL(string: "https://wordsapiv1.p.rapidapi.com/words/\(searchBar.text ?? "example")")
+        else {
+            print("Invalid URL")
+            return
+        }
+
+        var urlRequest = URLRequest(url: wordSearchURL)
+        urlRequest.httpMethod = "GET"
+        urlRequest.allHTTPHeaderFields = headers
+
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            guard let data = data, error == nil else {
+                return
+            }
+
+            do {
+                let wordFetched = try JSONDecoder().decode(RandomWord.self, from: data)
+                print(wordFetched)
+            }
+            catch {
+                print("Failed to convert \(error)")
+            }
+        }.resume()
     }
     
     struct RandomWord: Codable {
         var word: String
         var results: [results]
     }
-
+    
     struct results: Codable {
         var definition: String
         var partOfSpeech: String
