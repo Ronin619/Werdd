@@ -259,7 +259,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
         }.resume()
     }
     
-    @objc func searchButtonPressed() {
+    func fetchWordNetworkCall() {
         let headers = [
             "X-RapidAPI-Key": APIConstants.key,
             "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com"
@@ -282,7 +282,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
 
             do {
                 let wordFetched = try JSONDecoder().decode(RandomWord.self, from: data)
-                print(wordFetched)
+//                DispatchQueue.main.async { [weak self] in
+//
+//                }
+                print(wordFetched.results)
             }
             catch {
                 print("Failed to convert \(error)")
@@ -290,14 +293,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
         }.resume()
     }
     
-    struct RandomWord: Codable {
-        var word: String
-        var results: [results]
-    }
-    
-    struct results: Codable {
-        var definition: String
-        var partOfSpeech: String
+    @objc func searchButtonPressed() {
+        print("Hello")
     }
 }
     

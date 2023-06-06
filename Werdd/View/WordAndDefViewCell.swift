@@ -60,7 +60,6 @@ class WordAndDefViewCell: UICollectionViewCell {
     
     private func setUpUI() {
         contentView.addSubview(containerView)
-        contentView.backgroundColor = .red //UIColor(named: "lightGrey")
         
         containerView.addSubview(wordLabel)
         containerView.addSubview(speechLabel)
