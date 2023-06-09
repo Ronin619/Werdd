@@ -28,5 +28,8 @@ struct RandomWord: Decodable {
 struct results: Decodable {
     var definition: String
     var partOfSpeech: String
+    var synonyms: [String]?
+    var examples: [String]?
+    var antonyms: [String]?
 }
 

@@ -9,6 +9,8 @@ import UIKit
 
 class WordDetailsViewController: UIViewController {
     
+    var randomWordDetails: RandomWord?
+    
     // Mark: properties
     let wordArr: WordAndDef
     
@@ -59,7 +61,7 @@ class WordDetailsViewController: UIViewController {
         let wordInfoView = WordInfoView(
             isHidden: hideAntonyms,
             backgroundColor: UIColor(named: "coral"),
-            word: "Synonyms",
+            word: "Antonyms",
             speech: nil,
             descriptionText: antonymText ?? "N/A"
         )

@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBarDelegate {
     
-    private var randomWord: RandomWord?
+    var randomWord: RandomWord?
     
     var wordDetails: [results]? {
         randomWord?.results
@@ -293,6 +293,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
             do {
                 let fetchedWordData = try JSONDecoder().decode(RandomWord.self, from: data)
                 self.randomWord = fetchedWordData
+                print(fetchedWordData.results?[0].synonyms)
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
