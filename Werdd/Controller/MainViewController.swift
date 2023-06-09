@@ -9,6 +9,16 @@ import UIKit
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBarDelegate {
     
+    private var randomWord: RandomWord?
+    
+    var wordDetails: [results]? {
+        randomWord?.results
+    }
+    
+    var searchedWord: String? {
+        randomWord?.word
+    }
+    
     let headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -247,10 +257,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
             
             do {
                 let randomWord = try JSONDecoder().decode(RandomWord.self, from: data)
-                DispatchQueue.main.async { [weak self] in
+                DispatchQueue.main.async { [weak self]  in
                     self?.wordLabel.text = randomWord.word
-                    self?.wordDefinitionLabel.text = randomWord.results[0].definition
-                    self?.wordSpeechLabel.text = randomWord.results[0].partOfSpeech
+                    self?.wordDefinitionLabel.text = randomWord.results?[0].definition
+                    self?.wordSpeechLabel.text = randomWord.results?[0].partOfSpeech
                 }
             }
             catch {
@@ -281,11 +291,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
             }
 
             do {
-                let wordFetched = try JSONDecoder().decode(RandomWord.self, from: data)
-//                DispatchQueue.main.async { [weak self] in
-//
-//                }
-                print(wordFetched.results)
+                let fetchedWordData = try JSONDecoder().decode(RandomWord.self, from: data)
+                self.randomWord = fetchedWordData
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
             }
             catch {
                 print("Failed to convert \(error)")
@@ -294,31 +304,37 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     }
     
     @objc func searchButtonPressed() {
-        print("Hello")
+        fetchWordNetworkCall()
     }
 }
     
 extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return wordArr.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->
+        return randomWord?.results?.count ?? 0
+     }
+     
+     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->
     UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
-        WordAndDefViewCell.identifier, for: indexPath) as? WordAndDefViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: WordAndDefViewCell.identifier, for: indexPath
+        ) as? WordAndDefViewCell else {
             return UICollectionViewCell()
         }
-        cell.contentView.backgroundColor = UIColor(named: "Orange")
-        cell.configure(with: wordArr[indexPath.row])
+        
+        guard let cellData = randomWord?.results?[indexPath.row] else {
+                    return UICollectionViewCell()
+                }
+        
+        cell.configure(cellData, word: searchedWord)
+        
         return cell
     }
 }
 
 extension MainViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(WordDetailsViewController(wordArr: wordArr[indexPath.row]), animated: true)
-    }
+            navigationController?.pushViewController(WordDetailsViewController(wordArr: wordArr[indexPath.row]), animated: true)
+        }
 }
 

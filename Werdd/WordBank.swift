@@ -20,12 +20,12 @@ import Foundation
         WordAndDef(word: "Queues", speech: "noun", definition: "linear data structure in which elements can be inserted only from one side of the list called rear, and the elements can be deleted only from the other side called the front.", synonyms: ["n/a"], antonyms: nil, examples: ["n/a"]),
     ]
 
-struct RandomWord: Codable {
+struct RandomWord: Decodable {
     var word: String
-    var results: [results]
+    var results: [results]?
 }
 
-struct results: Codable {
+struct results: Decodable {
     var definition: String
     var partOfSpeech: String
 }

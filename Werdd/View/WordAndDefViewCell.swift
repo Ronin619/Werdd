@@ -90,9 +90,9 @@ class WordAndDefViewCell: UICollectionViewCell {
     
     // Mark: this function fills the cells in the collection view.
     
-    func configure(with WordsAndDef: WordAndDef) {
-        wordLabel.text = WordsAndDef.word
-        speechLabel.text = WordsAndDef.speech
-        definitionLabel.text = WordsAndDef.definition
+    func configure(_ wordData: results, word: String?) {
+        wordLabel.text = word
+        speechLabel.text = wordData.partOfSpeech
+        definitionLabel.text = wordData.definition
       }
 }
