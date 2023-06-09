@@ -9,8 +9,6 @@ import UIKit
 
 class WordDetailsViewController: UIViewController {
     
-    var randomWordDetails: RandomWord?
-    
     // Mark: properties
     let wordArr: WordAndDef
     
@@ -86,7 +84,7 @@ class WordDetailsViewController: UIViewController {
     // Mark: Initializer
     init(wordArr: WordAndDef) {
         self.wordArr = wordArr
-        
+    
         super.init(nibName: nil, bundle: nil)
     }
     

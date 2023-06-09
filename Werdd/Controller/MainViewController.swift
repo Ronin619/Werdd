@@ -108,6 +108,12 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
         return button
     }()
     
+    let favoriteButton: FavoriteWordsViewButton = {
+        let button = FavoriteWordsViewButton(frame: .zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "lightGrey")
@@ -122,6 +128,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
         setUpSearchBar()
         setUpCollectionContainerView()
         setUpSearchButton()
+        setUpFavoriteButton()
     }
     
     func setUpHeaderLabel() {
@@ -235,6 +242,15 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
         ])
     }
     
+    func setUpFavoriteButton() {
+        view.addSubview(favoriteButton)
+        
+        NSLayoutConstraint.activate([
+            favoriteButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            favoriteButton.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -30)
+        ])
+    }
+    
     @objc func refreshButtonPressed() {
         let headers = [
             "X-RapidAPI-Key": APIConstants.key,
@@ -293,7 +309,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
             do {
                 let fetchedWordData = try JSONDecoder().decode(RandomWord.self, from: data)
                 self.randomWord = fetchedWordData
-                print(fetchedWordData.results?[0].synonyms)
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
