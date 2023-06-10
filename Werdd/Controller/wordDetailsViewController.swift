@@ -81,6 +81,16 @@ class WordDetailsViewController: UIViewController {
         return wordInfoView
     }()
     
+    var addToFavoriteButton: UIButton = {
+        let button = UIButton(type: .custom)
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40, weight: .heavy, scale: .medium)
+        let image = UIImage(systemName: "heart.fill", withConfiguration: symbolConfiguration)
+        button.setImage(image, for: .normal)
+        button.tintColor = UIColor(named: "coral")
+        button.addTarget(WordDetailsViewController.self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
     // Mark: Initializer
     init(wordArr: WordAndDef) {
         self.wordArr = wordArr
@@ -107,6 +117,9 @@ class WordDetailsViewController: UIViewController {
         
         let textAttribute = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.largeTitleTextAttributes = textAttribute
+        
+        let barButton = UIBarButtonItem(customView: addToFavoriteButton)
+        navigationItem.rightBarButtonItem = barButton
         
         navigationItem.title = wordArr.word
     }
@@ -147,5 +160,9 @@ class WordDetailsViewController: UIViewController {
             contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             definitionView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor)
         ])
+    }
+    
+    @objc func favoriteButtonPressed() {
+        print("Hello")
     }
 }
