@@ -350,7 +350,15 @@ extension MainViewController: UICollectionViewDataSource {
 
 extension MainViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            navigationController?.pushViewController(WordDetailsViewController(wordArr: wordArr[indexPath.row]), animated: true)
+        
+        guard
+            let word = randomWord,
+            let result = word.results?[indexPath.row] else {
+                    return
+                }
+        
+        let VC = WordDetailsViewController(searchedResult: result, searchedWord: word.word)
+            navigationController?.pushViewController(VC, animated: true)
         }
 }
 

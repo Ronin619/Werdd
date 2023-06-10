@@ -87,6 +87,7 @@ class WordInfoView: UIView {
         speechLabel.text = speech
         descriptionLabel.text = descriptionText
         
+        descriptionLabel.isHidden = descriptionText?.isEmpty ?? true
         speechLabel.isHidden = speech == nil
         
         addDescriptionStackView()

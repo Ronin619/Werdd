@@ -10,8 +10,10 @@ import UIKit
 class WordDetailsViewController: UIViewController {
     
     // Mark: properties
-    let wordArr: WordAndDef
-    
+    let searchedResult: results
+
+    let searchedWord: String
+  
     // Mark: UI Properties
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -31,17 +33,17 @@ class WordDetailsViewController: UIViewController {
     lazy var definitionView: WordInfoView = {
         let wordInfoView = WordInfoView(
             backgroundColor: UIColor(named: "greyBlue"),
-            word: "Definition", speech: wordArr.speech,
-            descriptionText: wordArr.definition
+            word: "Definition", speech: searchedResult.partOfSpeech,
+            descriptionText: searchedResult.definition
         )
         wordInfoView.translatesAutoresizingMaskIntoConstraints = false
         return wordInfoView
     }()
     
     lazy var synonymsView: WordInfoView = {
-        let hideSynonyms = wordArr.synonyms == nil
+        let hideSynonyms = searchedResult.synonyms == nil
         
-        let synonymText = wordArr.synonyms?.joined(separator: ", ")
+        let synonymText = searchedResult.synonyms?.joined(separator: ", ")
         let wordInfoView = WordInfoView(
             isHidden: hideSynonyms,
             backgroundColor: UIColor(named: "jungle"),
@@ -54,8 +56,8 @@ class WordDetailsViewController: UIViewController {
     }()
     
     lazy var antonymsView: WordInfoView = {
-        let hideAntonyms = wordArr.antonyms == nil
-        let antonymText = wordArr.antonyms?.joined(separator: ", ")
+        let hideAntonyms = searchedResult.antonyms == nil
+        let antonymText = searchedResult.antonyms?.joined(separator: ", ")
         let wordInfoView = WordInfoView(
             isHidden: hideAntonyms,
             backgroundColor: UIColor(named: "coral"),
@@ -68,8 +70,8 @@ class WordDetailsViewController: UIViewController {
     }()
     
     lazy var exampleUsageView: WordInfoView = {
-        let hideExamples = wordArr.examples == nil
-        let exampleText = wordArr.examples?.joined(separator: "\n\n")
+        let hideExamples = searchedResult.examples == nil
+        let exampleText = searchedResult.examples?.joined(separator: "\n\n")
         let wordInfoView = WordInfoView(
             isHidden: hideExamples,
             backgroundColor: UIColor(named: "gold"),
@@ -92,9 +94,10 @@ class WordDetailsViewController: UIViewController {
     }()
     
     // Mark: Initializer
-    init(wordArr: WordAndDef) {
-        self.wordArr = wordArr
-    
+    init(searchedResult: results, searchedWord: String) {
+        self.searchedResult = searchedResult
+        self.searchedWord = searchedWord
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -121,7 +124,7 @@ class WordDetailsViewController: UIViewController {
         let barButton = UIBarButtonItem(customView: addToFavoriteButton)
         navigationItem.rightBarButtonItem = barButton
         
-        navigationItem.title = wordArr.word
+        navigationItem.title = "Word"
     }
 
     private func setUpUI() {
