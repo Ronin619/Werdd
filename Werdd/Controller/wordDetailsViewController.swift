@@ -37,13 +37,6 @@ class WordDetailsViewController: UIViewController {
         return label
     }()
     
-    let navigationContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .blue
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     lazy var definitionView: WordInfoView = {
         let wordInfoView = WordInfoView(
             backgroundColor: UIColor(named: "greyBlue"),
@@ -139,9 +132,6 @@ class WordDetailsViewController: UIViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = textAttribute
         
         navigationItem.title = searchedWord
-        
-//        let barButtonItem = UIBarButtonItem(customView: addToFavoriteButton)
-//        navigationItem.rightBarButtonItem = barButtonItem
     }
 
     private func setUpUI() {

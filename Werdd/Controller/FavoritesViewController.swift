@@ -26,6 +26,7 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         setUpUI()
+        setUpNavigation()
         
         view.backgroundColor = UIColor(named: "lightGrey")
         super.viewDidLoad()
@@ -35,10 +36,19 @@ class FavoritesViewController: UIViewController {
         addScrollView()
     }
     
+    private func setUpNavigation() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let textAttribute = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.largeTitleTextAttributes = textAttribute
+        
+        navigationItem.title = "Favorites"
+    }
+    
     private func addScrollView() {
         view.addSubview(scrollView)
         
-        scrollView.backgroundColor = UIColor(named: "sandGrey")
+        scrollView.backgroundColor = .darkGray
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
