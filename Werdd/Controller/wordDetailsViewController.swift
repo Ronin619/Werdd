@@ -124,7 +124,7 @@ class WordDetailsViewController: UIViewController {
         let barButton = UIBarButtonItem(customView: addToFavoriteButton)
         navigationItem.rightBarButtonItem = barButton
         
-        navigationItem.title = "Word"
+        navigationItem.title = searchedWord
     }
 
     private func setUpUI() {
