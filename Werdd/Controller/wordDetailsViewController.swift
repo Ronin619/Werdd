@@ -30,6 +30,20 @@ class WordDetailsViewController: UIViewController {
         return stackView
     }()
     
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = searchedWord
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let navigationContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .blue
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var definitionView: WordInfoView = {
         let wordInfoView = WordInfoView(
             backgroundColor: UIColor(named: "greyBlue"),
@@ -85,11 +99,14 @@ class WordDetailsViewController: UIViewController {
     
     var addToFavoriteButton: UIButton = {
         let button = UIButton(type: .custom)
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40, weight: .heavy, scale: .medium)
-        let image = UIImage(systemName: "heart.fill", withConfiguration: symbolConfiguration)
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40, weight: .heavy, scale: .small)
+        let image = UIImage(systemName: "heart.slash.fill", withConfiguration: symbolConfiguration)
+        
         button.setImage(image, for: .normal)
         button.tintColor = UIColor(named: "coral")
         button.addTarget(WordDetailsViewController.self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
         return button
     }()
     
@@ -121,15 +138,16 @@ class WordDetailsViewController: UIViewController {
         let textAttribute = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.largeTitleTextAttributes = textAttribute
         
-        let barButton = UIBarButtonItem(customView: addToFavoriteButton)
-        navigationItem.rightBarButtonItem = barButton
-        
         navigationItem.title = searchedWord
+        
+//        let barButtonItem = UIBarButtonItem(customView: addToFavoriteButton)
+//        navigationItem.rightBarButtonItem = barButtonItem
     }
 
     private func setUpUI() {
         addScrollView()
         addStackViews()
+        setUpFavoriteButton()
     }
     
     private func addScrollView() {
@@ -162,6 +180,16 @@ class WordDetailsViewController: UIViewController {
             contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             definitionView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor)
+        ])
+    }
+    
+    private func setUpFavoriteButton() {
+        view.addSubview(addToFavoriteButton)
+        
+        NSLayoutConstraint.activate([
+            addToFavoriteButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -80),
+            addToFavoriteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            addToFavoriteButton.bottomAnchor.constraint(equalTo: contentStackView.topAnchor, constant: 20)
         ])
     }
     
