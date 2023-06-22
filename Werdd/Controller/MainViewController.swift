@@ -245,6 +245,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     func setUpFavoriteButton() {
         view.addSubview(favoriteButton)
         
+        favoriteButton.addTarget(self, action: #selector(favoritesButtonPressed), for: .touchUpInside)
+        
         NSLayoutConstraint.activate([
             favoriteButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             favoriteButton.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -30)
@@ -321,6 +323,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     
     @objc func searchButtonPressed() {
         fetchWordNetworkCall()
+    }
+    
+    @objc func favoritesButtonPressed() {
+        print("Hello")
     }
 }
     

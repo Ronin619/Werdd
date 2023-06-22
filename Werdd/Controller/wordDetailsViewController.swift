@@ -11,8 +11,12 @@ class WordDetailsViewController: UIViewController {
     
     // Mark: properties
     let searchedResult: results
-
     let searchedWord: String
+    var buttonWasPressed: Bool = false {
+        didSet {
+            updateAddToFavoritesButton()
+        }
+    }
   
     // Mark: UI Properties
     let scrollView: UIScrollView = {
@@ -90,19 +94,6 @@ class WordDetailsViewController: UIViewController {
         return wordInfoView
     }()
     
-    var addToFavoriteButton: UIButton = {
-        let button = UIButton(type: .custom)
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40, weight: .heavy, scale: .small)
-        let image = UIImage(systemName: "heart.slash.fill", withConfiguration: symbolConfiguration)
-        
-        button.setImage(image, for: .normal)
-        button.tintColor = UIColor(named: "coral")
-        button.addTarget(WordDetailsViewController.self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
-    
     // Mark: Initializer
     init(searchedResult: results, searchedWord: String) {
         self.searchedResult = searchedResult
@@ -130,21 +121,19 @@ class WordDetailsViewController: UIViewController {
         
         let textAttribute = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.largeTitleTextAttributes = textAttribute
-        
-        navigationItem.title = searchedWord
     }
 
     private func setUpUI() {
         addScrollView()
         addStackViews()
-        setUpFavoriteButton()
+        updateAddToFavoritesButton()
     }
     
     private func addScrollView() {
         view.addSubview(scrollView)
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -173,17 +162,32 @@ class WordDetailsViewController: UIViewController {
         ])
     }
     
-    private func setUpFavoriteButton() {
-        view.addSubview(addToFavoriteButton)
+    private func updateAddToFavoritesButton() {
         
-        NSLayoutConstraint.activate([
-            addToFavoriteButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -80),
-            addToFavoriteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            addToFavoriteButton.bottomAnchor.constraint(equalTo: contentStackView.topAnchor, constant: 20)
-        ])
+        if buttonWasPressed {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"),
+                style: .done,target: self, action: #selector(deleteFromFavorites))
+            navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "coral")
+        } else {
+                navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.slash"),
+                    style: .done, target: self, action: #selector(saveToFavorites))
+            }
+        }
+    
+    @objc func addToFavoriteButtonPressed() {
+            print("hello")
+        }
+
+    @objc func saveToFavorites() {
+            buttonWasPressed = true
+            print("Hello")
+        }
+    
+    @objc func deleteFromFavorites() {
+            buttonWasPressed = false
+            print("Hello")
+        }
+
     }
     
-    @objc func favoriteButtonPressed() {
-        print("Hello")
-    }
-}
+    
