@@ -327,6 +327,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     
     @objc func favoritesButtonPressed() {
         print("Hello")
+        navigationController?.pushViewController(FavoritesViewController(), animated: true)
     }
 }
     
@@ -356,7 +357,6 @@ extension MainViewController: UICollectionViewDataSource {
 
 extension MainViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         guard
             let word = randomWord,
             let result = word.results?[indexPath.row] else {

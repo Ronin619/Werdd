@@ -48,12 +48,12 @@ class FavoritesViewController: UIViewController {
     private func addScrollView() {
         view.addSubview(scrollView)
         
-        scrollView.backgroundColor = .darkGray
+        scrollView.backgroundColor = .lightGray
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
