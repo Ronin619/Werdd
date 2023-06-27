@@ -9,10 +9,11 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
     
-    let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        return scrollView
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = UIColor(named: "lightGrey")
+        return tableView
     }()
     
     init() {
@@ -25,15 +26,23 @@ class FavoritesViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        setUpUI()
+        setUpTableView()
         setUpNavigation()
         
-        view.backgroundColor = UIColor(named: "lightGrey")
+        tableView.dataSource = self
+        
         super.viewDidLoad()
     }
     
-    private func setUpUI() {
-        addScrollView()
+    private func setUpTableView() {
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
     }
     
     private func setUpNavigation() {
@@ -45,17 +54,18 @@ class FavoritesViewController: UIViewController {
         navigationItem.title = "Favorites"
     }
     
-    private func addScrollView() {
-        view.addSubview(scrollView)
-        
-        scrollView.backgroundColor = .lightGray
-        
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ])
+}
+
+extension FavoritesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section:
+         Int) -> Int {
+         return 10
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath:
+         IndexPath) -> UITableViewCell {
+         let cell = UITableViewCell()
+         cell.backgroundColor = UIColor(named: "lightOrange")
+         return cell
+    }
 }
