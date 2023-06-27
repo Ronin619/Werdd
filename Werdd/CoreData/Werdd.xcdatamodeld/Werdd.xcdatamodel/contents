@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="WordDetail" representedClassName="WordDetail" syncable="YES">
+        <attribute name="definition" attributeType="String"/>
+        <attribute name="partOfSpeech" attributeType="String"/>
+        <attribute name="word" attributeType="String"/>
+    </entity>
+</model>

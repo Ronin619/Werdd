@@ -326,7 +326,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     }
     
     @objc func favoritesButtonPressed() {
-        print("Hello")
         navigationController?.pushViewController(FavoritesViewController(), animated: true)
     }
 }

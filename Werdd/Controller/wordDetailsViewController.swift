@@ -93,6 +93,14 @@ class WordDetailsViewController: UIViewController {
         wordInfoView.translatesAutoresizingMaskIntoConstraints = false
         return wordInfoView
     }()
+
+    let favoriteButton: UIButton = {
+       let button = UIButton()
+       button.addTarget(WordDetailsViewController.self, action: #selector(addToFavoriteButtonPressed), for: .touchUpInside)
+       button.setImage(UIImage(named: "star.fill"), for: .normal)
+       button.translatesAutoresizingMaskIntoConstraints = false
+       return button
+    }()
     
     // Mark: Initializer
     init(searchedResult: results, searchedWord: String) {
@@ -118,9 +126,9 @@ class WordDetailsViewController: UIViewController {
     
     private func setUpNavigation() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        
         let textAttribute = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.largeTitleTextAttributes = textAttribute
+        navigationItem.title = "Word Details"
     }
 
     private func setUpUI() {
@@ -161,9 +169,8 @@ class WordDetailsViewController: UIViewController {
             definitionView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor)
         ])
     }
-    
+
     private func updateAddToFavoritesButton() {
-        
         if buttonWasPressed {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"),
                 style: .done,target: self, action: #selector(deleteFromFavorites))
