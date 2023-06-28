@@ -32,6 +32,18 @@ class DataManager {
         }
     }
     
+    // MARK: Read
+    
+    static func fetchFavoriteWordDetails(completion: ([WordDetail]?) -> Void) {
+        do {
+            let wordDetails = try managedObjectContext.fetch(WordDetail.fetchRequest())
+            completion(wordDetails)
+        }
+        catch {
+            print("Cannot Fetch!")
+        }
+    }
+    
     // MARK: Delete
     
     static func removeFavoriteWord(word: WordDetail) {

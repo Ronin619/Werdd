@@ -173,11 +173,11 @@ class WordDetailsViewController: UIViewController {
     private func updateAddToFavoritesButton() {
         if buttonWasPressed {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"),
-                style: .done,target: self, action: #selector(deleteFromFavorites))
+                style: .done,target: self, action: #selector(saveToFavorites))
             navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "coral")
         } else {
                 navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.slash"),
-                    style: .done, target: self, action: #selector(saveToFavorites))
+                    style: .done, target: self, action: #selector(deleteFromFavorites))
             }
         }
     
@@ -187,6 +187,9 @@ class WordDetailsViewController: UIViewController {
 
     @objc func saveToFavorites() {
             buttonWasPressed = true
+        
+        DataManager.createFavoriteWord(withWord: searchedWord, aPartOfSpeech: searchedResult.partOfSpeech, andDefinition: searchedResult.definition)
+        
             print("Hello")
         }
     
