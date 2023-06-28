@@ -13,6 +13,7 @@
 		3053C34329E8EED50073DAC2 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3053C34229E8EED50073DAC2 /* Roboto-Bold.ttf */; };
 		3053C34529E8EEDE0073DAC2 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3053C34429E8EEDE0073DAC2 /* Roboto-Italic.ttf */; };
 		3053C34729E8EEE50073DAC2 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3053C34629E8EEE50073DAC2 /* Roboto-Regular.ttf */; };
+		305C54D82A4BB05700AD0F70 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305C54D72A4BB05700AD0F70 /* DataManager.swift */; };
 		3060788429E79CC4003F8288 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3060788329E79CC4003F8288 /* AppDelegate.swift */; };
 		3060788629E79CC4003F8288 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3060788529E79CC4003F8288 /* SceneDelegate.swift */; };
 		3060788829E79CC4003F8288 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3060788729E79CC4003F8288 /* MainViewController.swift */; };
@@ -36,6 +37,7 @@
 		3053C34229E8EED50073DAC2 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../../../Roboto/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		3053C34429E8EEDE0073DAC2 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "../../../Roboto/Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		3053C34629E8EEE50073DAC2 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../../Roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		305C54D72A4BB05700AD0F70 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		3060788029E79CC4003F8288 /* Werdd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Werdd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3060788329E79CC4003F8288 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3060788529E79CC4003F8288 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				30DD4E4E2A4A6F7300442897 /* Werdd.xcdatamodeld */,
 				30DD4E522A4A713600442897 /* WordDetail+CoreDataProperties.swift */,
 				30DD4E512A4A713600442897 /* WordDetail+CoreDataClass.swift */,
+				305C54D72A4BB05700AD0F70 /* DataManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30DD4E6E2A4A757600442897 /* WordsAndDefinitions.swift in Sources */,
+				305C54D82A4BB05700AD0F70 /* DataManager.swift in Sources */,
 				30DD4E542A4A713600442897 /* WordDetail+CoreDataProperties.swift in Sources */,
 				30530A0D2A11571200622DF7 /* WordDetailsViewController.swift in Sources */,
 				3060788829E79CC4003F8288 /* MainViewController.swift in Sources */,
