@@ -12,11 +12,11 @@ class WordDetailsViewController: UIViewController {
     // Mark: properties
     let searchedResult: results
     let searchedWord: String
-    var buttonWasPressed: Bool = false {
-        didSet {
-            updateAddToFavoritesButton()
-        }
-    }
+//    var buttonWasPressed: Bool = false {
+//        didSet {
+//            updateAddToFavoritesButton()
+//        }
+//    }
   
     // Mark: UI Properties
     let scrollView: UIScrollView = {
@@ -33,14 +33,7 @@ class WordDetailsViewController: UIViewController {
         stackView.spacing = 20
         return stackView
     }()
-    
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = searchedWord
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
+        
     lazy var definitionView: WordInfoView = {
         let wordInfoView = WordInfoView(
             backgroundColor: UIColor(named: "greyBlue"),
@@ -93,14 +86,6 @@ class WordDetailsViewController: UIViewController {
         wordInfoView.translatesAutoresizingMaskIntoConstraints = false
         return wordInfoView
     }()
-
-    let favoriteButton: UIButton = {
-       let button = UIButton()
-       button.addTarget(WordDetailsViewController.self, action: #selector(addToFavoriteButtonPressed), for: .touchUpInside)
-       button.setImage(UIImage(named: "star.fill"), for: .normal)
-       button.translatesAutoresizingMaskIntoConstraints = false
-       return button
-    }()
     
     // Mark: Initializer
     init(searchedResult: results, searchedWord: String) {
@@ -115,6 +100,7 @@ class WordDetailsViewController: UIViewController {
     }
     
     // Mark: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -124,24 +110,59 @@ class WordDetailsViewController: UIViewController {
         setUpNavigation()
     }
     
+    // MARK: UI Setup
+    
     private func setUpNavigation() {
         navigationController?.navigationBar.prefersLargeTitles = true
         let textAttribute = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.largeTitleTextAttributes = textAttribute
-        navigationItem.title = "Word Details"
+        navigationItem.title = searchedWord
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: self, action: #selector(changeButton))
+    }
+    
+    @objc func changeButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.slash"), style: .done, target: self, action: #selector(twiceButton))
+        print("Hello")
+    }
+    
+    @objc func twiceButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: self, action: #selector(changeButton))
+        print("clicked again")
     }
 
+//    @objc func saveToFavorites() {
+////      DataManager.createFavoriteWord(withWord: searchedWord, aPartOfSpeech: searchedResult.partOfSpeech, andDefinition: //searchedResult.definition)
+//        buttonWasPressed = true
+//        print("true")
+//        }
+//
+//    @objc func deleteFromFavorites() {
+////        DataManager.removeFavoriteWord(word: WordDetail)
+//          buttonWasPressed = false
+//          print("false")
+//        }
+    
+//    private func updateAddToFavoritesButton() {
+//        if buttonWasPressed {
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"),
+//                style: .done, target: self, action: #selector(deleteFromFavorites))
+//            navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "coral")
+//        } else {
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.slash"),
+//                style: .done, target: self, action: #selector(saveToFavorites))
+//            }
+//        }
+    
     private func setUpUI() {
         addScrollView()
         addStackViews()
-        updateAddToFavoritesButton()
     }
     
     private func addScrollView() {
         view.addSubview(scrollView)
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -168,36 +189,7 @@ class WordDetailsViewController: UIViewController {
             contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             definitionView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor)
         ])
-    }
-
-    private func updateAddToFavoritesButton() {
-        if buttonWasPressed {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"),
-                style: .done,target: self, action: #selector(saveToFavorites))
-            navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "coral")
-        } else {
-                navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.slash"),
-                    style: .done, target: self, action: #selector(deleteFromFavorites))
-            }
         }
-    
-    @objc func addToFavoriteButtonPressed() {
-            print("hello")
-        }
-
-    @objc func saveToFavorites() {
-            buttonWasPressed = true
-        
-        DataManager.createFavoriteWord(withWord: searchedWord, aPartOfSpeech: searchedResult.partOfSpeech, andDefinition: searchedResult.definition)
-        
-            print("Hello")
-        }
-    
-    @objc func deleteFromFavorites() {
-            buttonWasPressed = false
-            print("Hello")
-        }
-
     }
     
     
