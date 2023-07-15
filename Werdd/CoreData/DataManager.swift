@@ -51,16 +51,16 @@ class DataManager {
     
     // MARK: Delete
     
-    static func removeFavoriteWord(word: WordDetail) {
-        managedObjectContext.delete(word)
-        
-        do {
-            try managedObjectContext.save()
-        }
-        catch {
-            print("Error in deleting data.")
-        }
-    }
+//    static func removeFavoriteWord(word: String, ) {
+//        managedObjectContext.delete(word)
+//
+//        do {
+//            try managedObjectContext.save()
+//        }
+//        catch {
+//            print("Error in deleting data.")
+//        }
+//    }
 
 }
 

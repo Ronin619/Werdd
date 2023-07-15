@@ -117,11 +117,13 @@ class WordDetailsViewController: UIViewController {
     
     @objc func addToFavoritesButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: self, action: #selector(deleteFromFavoritesButton))
+        DataManager.createFavoriteWordItem(withWord: searchedWord, aPartOfSpeech: searchedResult.partOfSpeech, andDefinition: searchedResult.definition)
         print(searchedResult)
     }
     
     @objc func deleteFromFavoritesButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: self, action: #selector(addToFavoritesButton))
+        //DataManager.removeFavoriteWord(word: searchedWord, and: WordDetail)
         print("clicked again")
     }
     

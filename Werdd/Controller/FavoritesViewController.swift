@@ -9,6 +9,8 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
     
+    private let dataManager: DataManager
+    
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -16,7 +18,8 @@ class FavoritesViewController: UIViewController {
         return tableView
     }()
     
-    init() {
+    init(dataManager: DataManager = DataManager()) {
+        self.dataManager = dataManager
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -59,7 +62,7 @@ class FavoritesViewController: UIViewController {
 extension FavoritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section:
          Int) -> Int {
-         return 5
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath:
