@@ -12,11 +12,6 @@ class WordDetailsViewController: UIViewController {
     // Mark: properties
     let searchedResult: results
     let searchedWord: String
-//    var buttonWasPressed: Bool = false {
-//        didSet {
-//            updateAddToFavoritesButton()
-//        }
-//    }
   
     // Mark: UI Properties
     let scrollView: UIScrollView = {
@@ -121,37 +116,14 @@ class WordDetailsViewController: UIViewController {
     }
     
     @objc func addToFavoritesButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.slash"), style: .done, target: self, action: #selector(deleteFromFavoritesButton))
-        print("Hello")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: self, action: #selector(deleteFromFavoritesButton))
+        print(searchedResult)
     }
     
     @objc func deleteFromFavoritesButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: self, action: #selector(addToFavoritesButton))
         print("clicked again")
     }
-
-//    @objc func saveToFavorites() {
-////      DataManager.createFavoriteWord(withWord: searchedWord, aPartOfSpeech: searchedResult.partOfSpeech, andDefinition: //searchedResult.definition)
-//        buttonWasPressed = true
-//        print("true")
-//        }
-//
-//    @objc func deleteFromFavorites() {
-////        DataManager.removeFavoriteWord(word: WordDetail)
-//          buttonWasPressed = false
-//          print("false")
-//        }
-    
-//    private func updateAddToFavoritesButton() {
-//        if buttonWasPressed {
-//            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"),
-//                style: .done, target: self, action: #selector(deleteFromFavorites))
-//            navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "coral")
-//        } else {
-//            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.slash"),
-//                style: .done, target: self, action: #selector(saveToFavorites))
-//            }
-//        }
     
     private func setUpUI() {
         addScrollView()

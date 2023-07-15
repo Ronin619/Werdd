@@ -17,12 +17,12 @@ class DataManager {
     
     // MARK: Create
     
-    static func createFavoriteWord(withWord word: String, aPartOfSpeech partOfSpeech: String, andDefinition definition: String) {
+    static func createFavoriteWordItem(withWord word: String, aPartOfSpeech partOfSpeech: String, andDefinition definition: String) {
         
-        let favoriteWordDetails = WordDetail(context: managedObjectContext)
-        favoriteWordDetails.word = word
-        favoriteWordDetails.partOfSpeech = partOfSpeech
-        favoriteWordDetails.definition = definition
+        let favoriteWordDetailItem = WordDetail(context: managedObjectContext)
+        favoriteWordDetailItem.word = word
+        favoriteWordDetailItem.partOfSpeech = partOfSpeech
+        favoriteWordDetailItem.definition = definition
         
         do {
             try managedObjectContext.save()
@@ -34,14 +34,19 @@ class DataManager {
     
     // MARK: Read
     
-    static func fetchFavoriteWordDetails(completion: ([WordDetail]?) -> Void) {
+    static func fetchFavoriteWordDetails(usingWord word: String, completion: (WordDetail?) -> Void) {
+       
+        let fetchRequest = NSFetchRequest<WordDetail>(entityName: "WordDetail")
+        fetchRequest.predicate = NSPredicate(format: "word == %@", word)
+  
         do {
-            let wordDetails = try managedObjectContext.fetch(WordDetail.fetchRequest())
-            completion(wordDetails)
+            let favoriteWordItem = try managedObjectContext.fetch(fetchRequest)
+            completion(favoriteWordItem.first)
         }
         catch {
-            print("Cannot Fetch!")
+            print("Could not fetch due to error: \(error.localizedDescription)")
         }
+        completion(nil)
     }
     
     // MARK: Delete
