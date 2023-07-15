@@ -117,16 +117,16 @@ class WordDetailsViewController: UIViewController {
         let textAttribute = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.largeTitleTextAttributes = textAttribute
         navigationItem.title = searchedWord
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: self, action: #selector(changeButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.slash"), style: .done, target: self, action: #selector(addToFavoritesButton))
     }
     
-    @objc func changeButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.slash"), style: .done, target: self, action: #selector(twiceButton))
+    @objc func addToFavoritesButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.slash"), style: .done, target: self, action: #selector(deleteFromFavoritesButton))
         print("Hello")
     }
     
-    @objc func twiceButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: self, action: #selector(changeButton))
+    @objc func deleteFromFavoritesButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: self, action: #selector(addToFavoritesButton))
         print("clicked again")
     }
 
