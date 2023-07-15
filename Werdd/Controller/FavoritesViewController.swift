@@ -57,6 +57,10 @@ class FavoritesViewController: UIViewController {
         navigationItem.title = "Favorites"
     }
     
+    private func fetchFavoriteWords() {
+        dataManager
+    }
+    
 }
 
 extension FavoritesViewController: UITableViewDataSource {

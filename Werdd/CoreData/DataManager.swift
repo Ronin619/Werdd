@@ -49,6 +49,15 @@ class DataManager {
         completion(nil)
     }
     
+    static func fetchAllFavoriteWords(completion: ([WordDetail]?) -> Void) {
+        do {
+            let favoriteWordsDetails = try managedObjectContext.fetch(WordDetail.fetchRequest())
+            completion(favoriteWordsDetails)
+        } catch {
+            completion(nil)
+        }
+    }
+    
     // MARK: Delete
     
 //    static func removeFavoriteWord(word: String, ) {
