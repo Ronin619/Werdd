@@ -323,6 +323,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UISearchBa
     
     @objc func searchButtonPressed() {
         fetchWordNetworkCall()
+        searchBar.text = ""
     }
     
     @objc func favoritesButtonPressed() {
