@@ -48,6 +48,8 @@ class FavoritesTableView: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        viewSetUp()
     }
     
     required init?(coder: NSCoder) {
