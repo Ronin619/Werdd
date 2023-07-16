@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		302987092A6368EB00DEFAD9 /* FavoritesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302987082A6368EB00DEFAD9 /* FavoritesTableView.swift */; };
 		3045B0F329F0D511008DCEF9 /* RefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045B0F229F0D511008DCEF9 /* RefreshButton.swift */; };
 		30471AD62A14692400CACE9D /* WordInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30471AD52A14692400CACE9D /* WordInfoView.swift */; };
 		30530A0D2A11571200622DF7 /* WordDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30530A0C2A11571200622DF7 /* WordDetailsViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		302987082A6368EB00DEFAD9 /* FavoritesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableView.swift; sourceTree = "<group>"; };
 		3045B0F229F0D511008DCEF9 /* RefreshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshButton.swift; sourceTree = "<group>"; };
 		30471AD52A14692400CACE9D /* WordInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordInfoView.swift; sourceTree = "<group>"; };
 		30530A0C2A11571200622DF7 /* WordDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +108,6 @@
 		3060788229E79CC4003F8288 /* Werdd */ = {
 			isa = PBXGroup;
 			children = (
-				30DD4E6A2A4A753B00442897 /* APIStructs */,
 				30DD4E672A4A748800442897 /* Constants */,
 				30DD4E592A4A72A900442897 /* CoreData */,
 				30BA615D2A0333D100181B7A /* View */,
@@ -138,6 +139,7 @@
 			children = (
 				30D59FD62A1072F5000DF538 /* WordAndDefViewCell.swift */,
 				30471AD52A14692400CACE9D /* WordInfoView.swift */,
+				302987082A6368EB00DEFAD9 /* FavoritesTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -159,13 +161,6 @@
 				30DD4E682A4A74B100442897 /* ApiKey.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		30DD4E6A2A4A753B00442897 /* APIStructs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = APIStructs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +249,7 @@
 				30E1D6492A32CE1C00B1A00D /* FavoriteWordsViewButton.swift in Sources */,
 				30471AD62A14692400CACE9D /* WordInfoView.swift in Sources */,
 				30DD4E692A4A74B100442897 /* ApiKey.swift in Sources */,
+				302987092A6368EB00DEFAD9 /* FavoritesTableView.swift in Sources */,
 				30DD4E502A4A6F7300442897 /* Werdd.xcdatamodeld in Sources */,
 				3060788629E79CC4003F8288 /* SceneDelegate.swift in Sources */,
 				30D22C622A3F763B003B5764 /* FavoritesViewController.swift in Sources */,

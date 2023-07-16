@@ -10,13 +10,7 @@ import UIKit
 class FavoritesViewController: UIViewController {
     
     private let dataManager: DataManager
-    
-    let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = UIColor(named: "lightGrey")
-        return tableView
-    }()
+    private var favoriteWords: [WordDetail]?
     
     init(dataManager: DataManager = DataManager()) {
         self.dataManager = dataManager
@@ -29,23 +23,13 @@ class FavoritesViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        setUpTableView()
+        super.viewDidLoad()
+        
         setUpNavigation()
+        fetchFavoriteWords()
         
         tableView.dataSource = self
         
-        super.viewDidLoad()
-    }
-    
-    private func setUpTableView() {
-        view.addSubview(tableView)
-        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ])
     }
     
     private func setUpNavigation() {
@@ -58,7 +42,9 @@ class FavoritesViewController: UIViewController {
     }
     
     private func fetchFavoriteWords() {
-        dataManager
+        dataManager.fetchAllFavoriteWords {
+            favoriteWords in self.favoriteWords = favoriteWords
+        }
     }
     
 }
@@ -66,12 +52,13 @@ class FavoritesViewController: UIViewController {
 extension FavoritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section:
          Int) -> Int {
-        return 1
+        return favoriteWords?.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath:
-         IndexPath) -> UITableViewCell {
-         let cell = UITableViewCell()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let favoriteWords = favoriteWords?[indexPath.row] else { return UITableViewCell() }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: FavoritesViewController.identifier, for: indexPath) as! FavoritesViewController
          cell.backgroundColor = UIColor(named: "lightOrange")
          return cell
     }

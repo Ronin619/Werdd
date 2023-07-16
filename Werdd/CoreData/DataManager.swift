@@ -34,13 +34,13 @@ class DataManager {
     
     // MARK: Read
     
-    static func fetchFavoriteWordDetails(usingWord word: String, completion: (WordDetail?) -> Void) {
+        func fetchFavoriteWordDetails(usingWord word: String, completion: (WordDetail?) -> Void) {
        
         let fetchRequest = NSFetchRequest<WordDetail>(entityName: "WordDetail")
         fetchRequest.predicate = NSPredicate(format: "word == %@", word)
   
         do {
-            let favoriteWordItem = try managedObjectContext.fetch(fetchRequest)
+            let favoriteWordItem = try DataManager.managedObjectContext.fetch(fetchRequest)
             completion(favoriteWordItem.first)
         }
         catch {
@@ -49,9 +49,9 @@ class DataManager {
         completion(nil)
     }
     
-    static func fetchAllFavoriteWords(completion: ([WordDetail]?) -> Void) {
+        func fetchAllFavoriteWords(completion: ([WordDetail]?) -> Void) {
         do {
-            let favoriteWordsDetails = try managedObjectContext.fetch(WordDetail.fetchRequest())
+            let favoriteWordsDetails = try DataManager.managedObjectContext.fetch(WordDetail.fetchRequest())
             completion(favoriteWordsDetails)
         } catch {
             completion(nil)
