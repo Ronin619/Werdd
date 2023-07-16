@@ -20,7 +20,6 @@ class FavoritesViewController: UIViewController, UITableViewDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(FavoritesTableView.self, forCellReuseIdentifier: FavoritesTableView.identifier)
-        tableView.separatorStyle = .none
         return tableView
     }()
     

@@ -71,14 +71,16 @@ class FavoritesTableView: UITableViewCell {
         containerView.addSubview(definitionLabel)
         contentView.addSubview(containerView)
         
+        contentView.backgroundColor = .lightGray
+        
         wordLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         partOfSpeechLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+            containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
             
             wordLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12),
             wordLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
