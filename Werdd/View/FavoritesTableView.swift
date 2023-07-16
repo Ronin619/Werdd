@@ -18,7 +18,7 @@ class FavoritesTableView: UITableViewCell {
     let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "lightOrange")
+        view.backgroundColor = UIColor(named: "faceBookBlue")
         view.layer.cornerRadius = 20
         return view
     }()
@@ -26,6 +26,7 @@ class FavoritesTableView: UITableViewCell {
     var wordLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Roboto-Bold", size: 14)
         label.textColor = .black
         return label
     }()
@@ -33,6 +34,7 @@ class FavoritesTableView: UITableViewCell {
     var partOfSpeechLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Roboto-Italic", size: 10)
         label.textColor = .black
         return label
     }()
@@ -40,6 +42,7 @@ class FavoritesTableView: UITableViewCell {
     var definitionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Roboto-Regular", size: 13)
         label.textColor = .black
         return label
     }()
