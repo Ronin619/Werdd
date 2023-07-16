@@ -10,14 +10,14 @@ import CoreData
 import UIKit
 
 class DataManager {
-    static let managedObjectContext: NSManagedObjectContext = {
+    var managedObjectContext: NSManagedObjectContext = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }()
     
     // MARK: Create
     
-    static func createFavoriteWordItem(withWord word: String, aPartOfSpeech partOfSpeech: String, andDefinition definition: String) {
+    func createFavoriteWordItem(withWord word: String, aPartOfSpeech partOfSpeech: String, andDefinition definition: String) {
         
         let favoriteWordDetailItem = WordDetail(context: managedObjectContext)
         favoriteWordDetailItem.word = word
@@ -40,7 +40,7 @@ class DataManager {
         fetchRequest.predicate = NSPredicate(format: "word == %@", word)
   
         do {
-            let favoriteWordItem = try DataManager.managedObjectContext.fetch(fetchRequest)
+            let favoriteWordItem = try managedObjectContext.fetch(fetchRequest)
             completion(favoriteWordItem.first)
         }
         catch {
@@ -51,7 +51,7 @@ class DataManager {
     
         func fetchAllFavoriteWords(completion: ([WordDetail]?) -> Void) {
         do {
-            let favoriteWordsDetails = try DataManager.managedObjectContext.fetch(WordDetail.fetchRequest())
+            let favoriteWordsDetails = try managedObjectContext.fetch(WordDetail.fetchRequest())
             completion(favoriteWordsDetails)
         } catch {
             completion(nil)
@@ -60,16 +60,15 @@ class DataManager {
     
     // MARK: Delete
     
-//    static func removeFavoriteWord(word: String, ) {
-//        managedObjectContext.delete(word)
-//
-//        do {
-//            try managedObjectContext.save()
-//        }
-//        catch {
-//            print("Error in deleting data.")
-//        }
-//    }
+    func deleteFavoriteWord(_ favoriteWord: WordDetail) throws {
+        managedObjectContext.delete(favoriteWord)
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("Unable to delete favorite word.")
+        }
+    }
 
 }
 

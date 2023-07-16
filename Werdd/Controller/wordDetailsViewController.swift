@@ -12,6 +12,7 @@ class WordDetailsViewController: UIViewController {
     // Mark: properties
     let searchedResult: results
     let searchedWord: String
+    let dataManager: DataManager
   
     // Mark: UI Properties
     let scrollView: UIScrollView = {
@@ -83,9 +84,10 @@ class WordDetailsViewController: UIViewController {
     }()
     
     // Mark: Initializer
-    init(searchedResult: results, searchedWord: String) {
+    init(searchedResult: results, searchedWord: String, dataManager: DataManager = DataManager()) {
         self.searchedResult = searchedResult
         self.searchedWord = searchedWord
+        self.dataManager = dataManager
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -112,18 +114,11 @@ class WordDetailsViewController: UIViewController {
         let textAttribute = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.largeTitleTextAttributes = textAttribute
         navigationItem.title = searchedWord
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.slash"), style: .done, target: self, action: #selector(addToFavoritesButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: self, action: #selector(addToFavoritesButton))
     }
     
     @objc func addToFavoritesButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: self, action: #selector(deleteFromFavoritesButton))
-        DataManager.createFavoriteWordItem(withWord: searchedWord, aPartOfSpeech: searchedResult.partOfSpeech, andDefinition: searchedResult.definition)
-    }
-    
-    @objc func deleteFromFavoritesButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: self, action: #selector(addToFavoritesButton))
-        //DataManager.removeFavoriteWord(word: searchedWord, and: WordDetail)
-        print("clicked again")
+        dataManager.createFavoriteWordItem(withWord: searchedWord, aPartOfSpeech: searchedResult.partOfSpeech, andDefinition: searchedResult.definition)
     }
     
     private func setUpUI() {

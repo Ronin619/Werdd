@@ -73,6 +73,16 @@ class FavoritesViewController: UIViewController, UITableViewDelegate {
         }
     }
     
+    private func deleteFavoritedWord(_ word: WordDetail, atIndexPath indexPath: IndexPath) {
+        do {
+            try dataManager.deleteFavoriteWord(word)
+            favoriteWords?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        } catch {
+            print("Unable to delete favorite word.")
+        }
+    }
+    
 }
 
 extension FavoritesViewController: UITableViewDataSource {
@@ -88,6 +98,14 @@ extension FavoritesViewController: UITableViewDataSource {
   
         cell.updateViews(with: favoriteWords)
          return cell
+    }
+}
+
+extension FavoritesViewController {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let favoriteWord = self.favoriteWords?[indexPath.row] else { return }
+        
+        self.deleteFavoritedWord(favoriteWord, atIndexPath: indexPath)
     }
 }
 
