@@ -1,7 +1,5 @@
 # Werdd
-<div>
 ![Screenshot 2023-08-17 at 9 56 34 PM 2](https://github.com/Ronin619/Werdd/assets/78436957/6a3d1196-d2bd-4a48-8c69-279726dfd03a)
-</div>
 <div>
   <h2>Description</h2>
   <p>
