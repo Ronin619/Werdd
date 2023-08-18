@@ -10,3 +10,10 @@
   <li>Seach all available definition for a specific word using an API call</li>
   <li>View a specific words definition, synonyms, antonyms, and example usages when available</li>
 </ul>
+<h2>Tech Stack</h2>
+<ul>
+  <li>Swift</li>
+  <li>UIKit</li>
+  <li>Core Data</li>
+  <li>Grand Central Dispatch</li>
+</ul>
